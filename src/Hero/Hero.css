@@ -1,0 +1,110 @@
+
+.hero-body {
+    margin-top: 50px;
+  align-items: center;
+
+  /* background-color: #d3d3d3; */
+ 
+  /* White background with 20% transparency */
+  backdrop-filter: blur(10px); 
+  /* border: 1px solid rgba(255, 255, 255, 0.18);  */
+  /* box-shadow: 10px 20px 32px 10px rgba(0, 0, 0, 0.5);  */
+}
+.description p{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    display: inline;
+  text-align: center;
+  
+  font-family: "Nunito";
+}
+.heading h1{
+    color:#509494;
+}
+.description {
+  font-family: "Nunito";
+  /* padding: px; */
+  text-align: center;
+}
+span{
+    color:#509494;
+}
+.button-group {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* CSS */
+.button-56 {
+  margin: 10px;
+  align-items: center;
+  background-color: #438F8F;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-56 a{
+    text-decoration: none;
+    list-style: none;
+    color: #ffffff;
+}
+.button-56 i{
+display: flex;
+/* margin: 2px; */
+}
+.button-56:after {  
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #000000;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+  
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}

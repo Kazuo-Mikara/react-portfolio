@@ -1,0 +1,36 @@
+.skill_container{
+    margin:40px;
+    display: grid;
+    font-family: 'Nunito';
+    /* align-items: center; */
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(2,440px);
+
+}
+
+.programming h3{
+    position: relative;
+    left:-40px;
+}
+.programming{
+    margin: 10px;
+    padding: 10px;
+    /* background:#509494 ; */
+    text-align: center;  
+    /* background-color: black; */
+}
+.skill_data{
+
+    display: grid;
+    grid-template-columns: repeat(2,150px);
+}
+.data_analysis h3{
+    position: relative;
+    left:-40px;
+}
+.data_analysis{
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
