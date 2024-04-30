@@ -1,5 +1,4 @@
-import Typewriter from 'typewriter-effect'
-import { Swipe } from '../Slide/Swipe'
+
 import ExecutiveOverview from '../assets/Executive_Overview.png'
 import './Project.css'
 export const Project = () => {

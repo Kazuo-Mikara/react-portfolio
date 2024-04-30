@@ -16,8 +16,8 @@ export const Hero = () => {
 
                     <p>
                         Data Analyst with 1 year of experience in transforming raw data into actionable insights.</p>
-                       <p> Proven ability in &nbsp; <span>SQL, Python, R and excel ,tablaeu ,Power BI </span> 
-                        {/* <span><Typewriter className="typewriter"
+                       <p> Proven ability in &nbsp; 
+                        <span><Typewriter className="typewriter"
                             options={{
                                 strings: ["SQL, Python, R and excel ,tablaeu ,Power BI "],
                                 autoStart: true,
@@ -26,7 +26,7 @@ export const Hero = () => {
                             }}
                             />
 
-                        </span> */}
+                        </span>
                        &nbsp; to analyze trends.
                   </p>
                   
