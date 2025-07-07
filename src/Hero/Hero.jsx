@@ -9,16 +9,16 @@ export const Hero = () => {
             <div className='hero-body'>
                 <div className='heading'>
                     <h1>HTOO MYAT KYAW </h1>
-                    <h2>Data Analyst  based in Myanmar </h2>
+                    <h2>Data Analyst  and Web Developer based in Myanmar </h2>
 
                 </div>
 
                 <div className="description">
 
                     <p>
-                        Data Analyst with 1 year of experience in transforming raw data into actionable insights.</p>
-                       <p> Proven ability in &nbsp; 
-                        <span><Typewriter className="typewriter"
+                        Data Analyst with 3 years of experience in transforming raw data into actionable insights.</p>
+                       <p> Proven ability in SQL, Python, R and excel ,tablaeu ,Power BI to analyze trends. </p>
+                        {/* <span><Typewriter className="typewriter"
                             options={{
                                 strings: ["SQL, Python, R and excel ,tablaeu ,Power BI "],
                                 autoStart: true,
@@ -27,9 +27,10 @@ export const Hero = () => {
                             }}
                             />
 
-                        </span>
-                       &nbsp; to analyze trends.
-                  </p>
+                        </span> */}
+                       <p>
+                        Proficient in web development using HTML, CSS, JavaScript,Tailwind CSS, Bootstrap, React and Node.js.
+                        </p> 
                   
                             <p>Identify patterns, and support data-driven decision making.</p>
                      <p>   Passionate about using data to solve complex business problems</p>
