@@ -34,7 +34,7 @@ export const Hero = () => {
                      <p>   Passionate about using data to solve complex business problems</p>
                     <div className="button-group">
                         <button className="button-56" role="button">
-                            <a href="#">Download CV </a>
+                            <a href="/src/assets/Htoo_MyatKyaw_Resumee.pdf">Download Resume </a>
                             <i> <FiFileText /> </i>
                         </button>
                         <button className="button-56" role="button">

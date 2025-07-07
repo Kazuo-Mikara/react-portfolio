@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 article {
     --img-scale: 1.001;
     --title-color: black;
@@ -7,9 +8,11 @@ article {
     border-radius: 16px;
     box-shadow: none;
     background: #fff;
+  
     transform-origin: center;
     transition: all 0.4s ease-in-out;
     overflow: hidden;
+    
   }
   
   article a::after {
@@ -23,11 +26,12 @@ article {
   /* basic article elements styling */
   article h2 {
     margin: 0 0 18px 0;
-    font-family: "Bebas Neue", cursive;
+    font-family: "Poppins", cursive;
     font-size: 1.9rem;
     letter-spacing: 0.06em;
     color: var(--title-color);
     transition: color 0.3s ease-out;
+   
   }
   
   figure {
@@ -46,6 +50,13 @@ article {
   
   .article-body {
     padding: 24px;
+    font-family: "Poppins";
+    
+  }
+  .article-body p:nth-last-child{
+    height: 200px;
+    overflow: scroll;
+    overflow-y:scroll;
   }
   
   article a {
@@ -92,7 +103,7 @@ article {
   .header{
     font-size: 2rem;
     margin-top: 4em;
-    font-family: "Nunito";
+    font-family: "Poppins";
     text-align: center;
   }
   .articles {
