@@ -57,7 +57,7 @@ export const Project = () => {
       <div className="article-body">
         <h2>YBS Transportation </h2>
         <p>
-          We aim to provide a hand in transportation for the people of Yangon. We are working on a project to provide a transportation guided system including up-to-date bus routes , bus lines and stops. Additionally, the user can use the routing engine which will help in a way that the engine will first locate his location and guide to the nearest bus stop and then he will be routed to the destination bus-stop.
+          For the people of Yangon, we are developing a transportation guided system that offers up-to-date bus route information and a routing engine to direct users from their current location to the nearest bus stop and then to their destination bus stop.
         </p>
         <a href="https://kazuo-travels.vercel.app/" target='_blank' className="read-more">
         </a>
