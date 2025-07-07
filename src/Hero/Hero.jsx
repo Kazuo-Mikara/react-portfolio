@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
+import Resume from "../../src/assets/Htoo_MyatKyaw_Resumee.pdf";
 import { FiFileText,FiFolder } from "react-icons/fi";
 export const Hero = () => {
     return (
@@ -34,7 +35,7 @@ export const Hero = () => {
                      <p>   Passionate about using data to solve complex business problems</p>
                     <div className="button-group">
                         <button className="button-56" role="button">
-                            <a href="/src/assets/Htoo_MyatKyaw_Resumee.pdf">Download Resume </a>
+                            <a href={Resume}>Download Resume </a>
                             <i> <FiFileText /> </i>
                         </button>
                         <button className="button-56" role="button">
