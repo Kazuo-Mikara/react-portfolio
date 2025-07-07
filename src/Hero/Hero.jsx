@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
-import Resume from "../../src/assets/Htoo_MyatKyaw_Resumee.pdf";
+import Resume from "../assets//Htoo_MyatKyaw_Resumee.pdf";
 import { FiFileText,FiFolder } from "react-icons/fi";
 export const Hero = () => {
     return (
