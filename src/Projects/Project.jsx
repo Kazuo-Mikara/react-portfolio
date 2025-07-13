@@ -2,7 +2,7 @@
 import ExecutiveOverview from '../assets/Executive_Overview.png'
 import Travel from "../assets/image.png"
 import './Project.css'
-export const Project = () => {
+export default function Project ()  {
   return (
     <>
     <div className="header">
@@ -28,6 +28,7 @@ export const Project = () => {
       </div>
     </div>
   </article>
+
   <article>
 
     <div className="article-wrapper">

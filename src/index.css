@@ -1,0 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montaga&display=swap');
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+width: 1px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+background: #f1f1f1; /* Background of the scrollbar track */
+}
+::-webkit-scrollbar-thumb {
+background: #438F8F; /* Color of the draggable part of the scrollbar */
+border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+background: #555; /* Color when hovering over the scrollbar thumb */
+}

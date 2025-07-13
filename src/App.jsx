@@ -1,18 +1,19 @@
 
-import Nav from './NavBar/Nav'
 import React from 'react'
-import { Hero } from './Hero/Hero'
-import { Project } from './Projects/Project'
+import Home from './pages/Home'
+
+
+
 
 
 
 const App = () => {
   return (
-    <div>
-      <Nav/>
-      <Hero/>
-     <Project/>
-    </div>
+    <>
+    <Home/>
+
+    {/* <Projects/> */}
+    </>
   )
 }
 

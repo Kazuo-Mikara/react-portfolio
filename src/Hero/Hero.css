@@ -1,38 +1,37 @@
-
 .hero-body {
-    margin-top: 50px;
-  align-items: center;
+  margin-top: 50px;
+  align-content: center;
 
   /* background-color: #d3d3d3; */
- 
+
   /* White background with 20% transparency */
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   /* border: 1px solid rgba(255, 255, 255, 0.18);  */
   /* box-shadow: 10px 20px 32px 10px rgba(0, 0, 0, 0.5);  */
 }
-.description p{
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.description p {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .heading {
-    display: inline;
+  display: inline;
   text-align: center;
-  
+
   font-family: "Nunito";
 }
-.heading h1{
-    color:#509494;
+.heading h1 {
+  color: #509494;
 }
 .description {
   font-family: "Nunito";
   /* padding: px; */
   text-align: center;
 }
-span{
-    color:#509494;
+span {
+  color: #509494;
 }
 .button-group {
   padding: 10px 0;
@@ -40,11 +39,18 @@ span{
   justify-content: center;
 }
 
+.resume_link{
+  color:#509494;
+  text-decoration: none;
+}
+.resume_link:hover{
+  color:#000;
+}
 /* CSS */
-.button-56 {
+/* .button-56 {
   margin: 10px;
   align-items: center;
-  background-color: #438F8F;
+  background-color: #438f8f;
   border: 2px solid #111;
   border-radius: 8px;
   box-sizing: border-box;
@@ -65,16 +71,16 @@ span{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.button-56 a{
-    text-decoration: none;
-    list-style: none;
-    color: #ffffff;
+.button-56 a {
+  text-decoration: none;
+  list-style: none;
+  color: #ffffff;
 }
-.button-56 i{
-display: flex;
-/* margin: 2px; */
-}
-.button-56:after {  
+.button-56 i {
+  display: flex;
+  /* margin: 2px; */
+/* }
+.button-56:after {
   background-color: #111;
   border-radius: 8px;
   content: "";
@@ -100,11 +106,68 @@ display: flex;
 
 .button-56:hover {
   outline: 0;
-  
+}  */
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background-color: #509494;
+  padding: 1em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+border-radius: 10px;
+box-shadow:  11px 11px 10px #c2c3c3,
+             -11px -11px 10px #f6f9f9;
+}
+button i {
+  color: white;
+}
+button a {
+  display: block;
+  text-decoration: none;
+  margin-left: 0.3em;
+  color:#eff1f1;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform: translateY(-4rem);
+  transition: transform 0.3s ease-in-out;
+ }
+/* 
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(4em) rotate(45deg) scale(1.1);
+}
+
+button:hover a {
+  transform: translateY(3em);
+}
+
+button:active {
+  transform: scale(0.95);
+} 
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
 }
 
 @media (min-width: 768px) {
   .button-56 {
     padding: 0 40px;
   }
-}
+} */
