@@ -2,7 +2,7 @@ import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
 import Resume from "../assets//Htoo_MyatKyaw_Resumee.pdf";
-import { FiFileText, FiFolder } from "react-icons/fi";
+
 export default function Hero() {
     return (
         <div className='hero-main' >
@@ -34,7 +34,7 @@ export default function Hero() {
 
                     <p>identify patterns, and support data-driven decision making.</p>
                     <p>   passionate about using data to solve complex business problems</p>
-                    <p>download my resume<a href='#' className='resume_link'>&nbsp; here</a>.</p>
+                    <p>download my resume<a href={Resume} className='resume_link'>&nbsp; here</a>.</p>
 
                     {/* <div className="button-group">
                     
