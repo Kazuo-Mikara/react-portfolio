@@ -3,7 +3,29 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+  transition: all 500ms ease-out;
+}
+
+/* Hidden by default at top of page, slide-in when .show is added */
+.nav-links.hidden {
+  /* transform: translateY(-120%); */
+  opacity: 0;
+  pointer-events: none;
+
+}
+
+.nav-links.show {
+
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 1000;
+  pointer-events: auto;
+  transition: transform 300ms ease-in, opacity 300ms ease-in;
 }
 
 @media screen and (max-width: 768px) {
@@ -52,24 +74,11 @@
     transform: rotate(-45deg);
     bottom: 9px;
   }
-  .nav-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
 
   .nav-text {
     flex: 1;
     text-align: center;
-    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    font-size: clamp(1rem, 2vw, 0.9rem);
     color: white;
     line-height: 1.2;
   }
@@ -80,8 +89,9 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(40px);
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
     z-index: 1001;
@@ -91,39 +101,8 @@
     transform: translateX(0);
   }
 
-  .nav-links ul {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-  }
 
-  .nav-links ul li {
-    margin: 0;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .nav-links.active ul li {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .nav-links ul li a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
-  }
-
-  .nav-links ul li svg {
-    font-size: 1.4rem;
-  }
-
-  .nav-icons {
+  /* .nav-icons {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -141,42 +120,88 @@
   .nav-icons ul li svg {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     color: #438F8F;
-  }
+  } */
 
-  /* Add padding to main content to prevent overlap with fixed bottom nav */
-  body {
-    padding-bottom: 70px;
-  }
+  /* No extra bottom padding needed when navbar is sticky at top */
 
   /* Animation delays for menu items */
-  .nav-links.active ul li:nth-child(1) { transition-delay: 0.1s; }
-  .nav-links.active ul li:nth-child(2) { transition-delay: 0.2s; }
-  .nav-links.active ul li:nth-child(3) { transition-delay: 0.3s; }
-  .nav-links.active ul li:nth-child(4) { transition-delay: 0.4s; }
+  .nav-links.active ul li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .nav-links.active ul li:nth-child(2) {
+    transition-delay: 0.3s;
+  }
+
+  .nav-links.active ul li:nth-child(3) {
+    transition-delay: 0.6s;
+  }
+
+  .nav-links.active ul li:nth-child(4) {
+    transition-delay: 0.8s;
+  }
 }
-ul {
+
+.nav-links ul,
+.nav-icons ul,
+.nav-container ul {
   flex: 1;
   list-style: none;
   text-align: center;
 }
-ul a {
+
+.nav-links ul a,
+.nav-icons ul a,
+.nav-container ul a {
   color: #000;
   text-decoration: none;
 }
-ul a:hover {
+
+.nav-links ul a:hover,
+.nav-icons ul a:hover,
+.nav-container ul a:hover {
   color: #438F8F;
 }
-ul li {
-  display: inline-block;
 
+.nav-links ul li,
+.nav-icons ul li,
+.nav-container ul li {
+  display: inline-block;
   margin: 10px 20px;
   font-size: 1.2rem;
   cursor: pointer;
 }
+
 .nav-text {
   font-size: 1rem;
   color: #438F8F;
   font-family: "Nunito";
+}
+
+/* nav-text should always be visible; nav-links hidden until scroll */
+.nav-links,
+.nav-container {
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
+}
+
+/* Desktop: hide nav-links until show class is added */
+.nav-links.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+}
+
+.nav-links.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* When navbar is scrolled (user has moved down), make container white */
+.nav-container.scrolled {
+  background: #ffffff;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .nav-links {
@@ -184,7 +209,7 @@ ul li {
   align-items: center;
   justify-content: flex-start;
   border-radius: 50px;
- 
+
 }
 
 .active {

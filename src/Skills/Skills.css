@@ -1,36 +1,150 @@
-.skill_container{
-    margin:40px;
+.skills-container {
+    width: 100%;
+    max-width: 1100px;
+    background: white;
+    margin: 0 auto;
+    padding: 40px 18px;
+    font-family: "Nunito", sans-serif;
+    box-sizing: border-box;
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.skills-header h1 {
+    font-size: 3rem;
+    margin: 0 0 8px 0;
+    font-weight: 800;
+    color: #0f172a;
+    /* dark slate */
+}
+
+.skills-sub {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #6b7280;
+}
+
+.skills-grid {
     display: grid;
-    font-family: 'Nunito';
-    /* align-items: center; */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* 
+.skill-card {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8.3px);
+    -webkit-backdrop-filter: blur(8.3px);
+    border: 1px solid rgba(255, 255, 255, 0.53);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+} */
+
+.skill-card {
+    /* glassmorphism card */
+    background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.55));
+    border-radius: 14px;
+    padding: 20px 20px;
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    backdrop-filter: blur(8px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(230,238,252,0.6);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
-    grid-template-columns: repeat(2,440px);
-
+    border-radius: 10px;
+    color: #2563eb;
+    border: 1px solid rgba(255,255,255,0.6);
 }
 
-.programming h3{
-    position: relative;
-    left:-40px;
+.card-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
 }
-.programming{
-    margin: 10px;
-    padding: 10px;
-    /* background:#509494 ; */
-    text-align: center;  
-    /* background-color: black; */
-}
-.skill_data{
 
-    display: grid;
-    grid-template-columns: repeat(2,150px);
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
-.data_analysis h3{
-    position: relative;
-    left:-40px;
+
+.skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-.data_analysis{
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
+
+.skill-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skill-name {
+    font-size: 1.rem;
+    color: #111827;
+}
+
+
+
+.percent-badge {
+    background: rgba(255,255,255,0.75);
+    color: #0f172a;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.progress-track {
+    height: 8px;
+    background: #f1f1f1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4e9999;
+    /* blue fill */
+    border-radius: 20px;
+    transition: width 700ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-fill {
+        transition: none;
+    }
 }

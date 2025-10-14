@@ -7,7 +7,7 @@ import Projects from './pages/Projects.jsx'
 
 const router=createBrowserRouter([
   {path:"/",Component:App},
-  {path:"/projects",Component:Projects} 
+  {path:"/projects",Component:Projects} ,
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

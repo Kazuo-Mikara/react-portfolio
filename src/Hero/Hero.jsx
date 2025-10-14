@@ -2,25 +2,45 @@ import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
 import Resume from "../assets//Htoo_MyatKyaw_Resumee.pdf";
-
+import image from "../assets/cv_image.png"
+import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
 export default function Hero() {
+    const handleDownload = (e) => {
+        // programmatically create an anchor to trigger the download without an <a> tag in the JSX
+        e.preventDefault();
+        try {
+            const link = document.createElement('a');
+            link.href = Resume;
+            // set a sensible filename for the downloaded file
+            link.download = 'Htoo_MyatKyaw_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (err) {
+            // fallback: open in new tab
+            window.open(Resume, '_blank', 'noopener');
+        }
+    }
     return (
-        <div className='hero-main' >
+        <div className='hero-main' id="home" >
             <div className='hero-body'>
+
+                <div className='hero-image'>
+                    <img src={image} alt='profile-pic' />
+                </div>
+
                 <div className='heading'>
-                    <h1 style={{ textTransform: "lowercase" }}>HTOO MYAT KYAW </h1>
-                    <h2>data analyst  and web developer based in myanmar </h2>
+                    <span >HTOO MYAT KYAW </span>
+                    <span >Mid-level Data Collector & Developer</span>
+                    <span >Quality Assurance | Frontend Development | Data Analysis</span>
 
                 </div>
 
                 <div className="description">
-
-                    <p>
-                        data analyst with 3 years of experience in transforming raw data into actionable insights.</p>
-                    <p> proven ability in <span>&nbsp;sql, python, R and excel ,tablaeu ,power bi to analyze trends. </span></p>
-                    {/* <span><Typewriter className="typewriter"
+                    {/* 
+                    <span><Typewriter className="typewriter"
                             options={{
-                                strings: ["SQL, Python, R and excel ,tablaeu ,Power BI "],
+                                strings: ["SQL, Python, R and excel ,tablaeu ,Power BI,React, HTML5, CSS3, JavaScript, Git, GitHub, Figma,WordPress,Elementor"],
                                 autoStart: true,
                                 delay:75,
                                 loop: true,
@@ -28,13 +48,27 @@ export default function Hero() {
                             />
 
                         </span> */}
-                    <p>
-                        proficient in web development using <span>&nbsp;html5, css, javascript, tailwind css, bootstrap, react and node.js.</span>
-                    </p>
+                    <div className='description-text'>
+                        <p>Results-driven professional with experience in data collection, quality assurance, and frontend development. Proficient in HTML5, React, and modern web technologies.</p>
+                        {/* <p>Download my resume<a href={Resume} className='resume_link'>&nbsp; here</a>.</p> */}
+                    </div>
+                    <div className='button-group'>
+                        <button className="description-button">
+                            <span>View My Work</span>
+                        </button>
+                        <button type="button" onClick={handleDownload} className="description-button ">
+                            <span className='btn2'>Download Resume</span>
+                        </button>
 
-                    <p>identify patterns, and support data-driven decision making.</p>
-                    <p>   passionate about using data to solve complex business problems</p>
-                    <p>download my resume<a href={Resume} className='resume_link'>&nbsp; here</a>.</p>
+                    </div>
+
+                    <div className='nav-icons'>
+                        <a href='https://github.com/Kazuo-Mikara' target='_blank'><FiGithub /> </a>
+                        <a href='www.linkedin.com/in/kazuooh/' target='_blank'><FiLinkedin /> </a>
+                        <a href='https://www.instagram.com/k_4_kazuo/?hl=en' target='_parent'><FiInstagram /> </a>
+                        <a href='https://www.facebook.com/hizuo976' target='_blank'><FiFacebook /> </a>
+                    </div>
+
 
                     {/* <div className="button-group">
                     

@@ -1,16 +1,29 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
 import './Nav.css'
 export function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showNav, setShowNav] = useState(false); // nav-links hidden until user scrolls; nav-text remains visible
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    // show the nav-links when user scrolls down, hide when at top
+    const onScroll = () => {
+      setShowNav(window.scrollY > 10);
+    };
+
+    // set initial state and attach listener
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <div className='nav-container'>
+  <div className={`nav-container ${showNav ? 'scrolled' : ''}`}>
       
       <div className='nav-text'>
         love the life you live <br />
@@ -23,26 +36,18 @@ export function Nav() {
           <span></span>
         </div>
       </div>
-      <div className='nav-links'> 
+      <div className={`nav-links ${isMenuOpen ? 'active' : ''} ${showNav ? 'show' : 'hidden'}`}> 
         <ul>
 
           <li><NavLink to='/' className={({isActive})=> (isActive ? 'active':'')}>about</NavLink></li>
+          <li><NavLink to='/skills' className={({isActive})=> (isActive ? 'active':'')}>skills</NavLink></li>
           <li><NavLink to='/projects' className={({isActive})=> (isActive ? 'active':'')}>projects</NavLink></li>
           <li><a href='#'>work</a></li>
           <li><a href='#'>contact</a></li>
 
         </ul>
       </div>
-      <div className='nav-icons'>
-        <ul>
-          <li><a href='https://github.com/Kazuo-Mikara' target='_blank'><FiGithub /> </a></li>
-          <li><a href='www.linkedin.com/in/kazuooh/' target='_blank'><FiLinkedin /> </a></li>
-          <li><a href='https://www.instagram.com/k_4_kazuo/?hl=en' target='_blank'><FiInstagram /> </a></li>
-          <li><a href='https://www.facebook.com/hizuo976' target='_blank'><FiFacebook /> </a></li>
-
-
-        </ul>
-      </div>
+     
     </div>
   )
 }
