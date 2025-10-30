@@ -1,0 +1,172 @@
+.contact-container {
+  width: 100%;
+  font-family: "Nunito";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  background-color: #101828;
+  color: #fff;
+}
+
+.contact-heading-container {
+  text-align: center;
+  color: #0f172a;
+}
+
+.contact-heading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.contact-sub-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #aaadb3;
+  margin-top: -10px;
+}
+
+.contact-body {
+  display: flex;
+  width: 80%;
+  padding: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+.contact-info {
+  padding: 10px;
+  margin: 10px;
+  flex: 1 1 55%;
+}
+
+.contact-info-heading-container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: center;
+  align-items: start;
+}
+.contact-info-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.contact-info-sub-heading {
+  font-size: 1.14rem;
+  font-weight: 400;
+}
+
+.contact-detail-container {
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  color: #fff;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  gap: 18px;
+}
+
+.contact-detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Right column — contact form card */
+.sendmail-section {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sendmail-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.sendmail-heading {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.sendmail-sub {
+  color: #bfc7d6;
+  margin-bottom: 18px;
+}
+
+.sendmail-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sendmail-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #2563eb; /* blue */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sendmail-button-icon {
+  font-size: 1rem;
+}
+
+.sendmail-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .contact-body {
+    flex-direction: column;
+    width: 94%;
+  }
+  .contact-info {
+    flex: 1 1 100%;
+  }
+  .sendmail-section {
+    flex: 1 1 100%;
+    margin-top: 12px;
+  }
+}

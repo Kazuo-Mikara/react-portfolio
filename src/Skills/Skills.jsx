@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Skills.css";
-import { FiCode, FiBarChart2, FiCheckSquare, FiTool } from 'react-icons/fi'
+import { FiCode, FiBarChart2, FiCheckSquare, FiTool } from 'react-icons/fi';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import AnimatedCounter from "./AnimatedCounter";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const CATEGORIES = [
     {
@@ -51,10 +57,40 @@ const CATEGORIES = [
         ],
     },
 ]
-
 export default function Skills() {
+    const skillsRef = useRef(null);
+
+    useEffect(() => {
+        const progressFills = skillsRef.current.querySelectorAll(".progress-fill");
+
+        // Reset widths to 0 initially for animation
+        progressFills.forEach(fill => (fill.style.width = '0%'));
+        gsap.to(progressFills, {
+            width: (i, target) => target.getAttribute('aria-valuenow') + '%',
+            ease: "sine.inOut",
+            scrollTrigger: {
+                trigger: skillsRef.current,
+                start: " top center",
+                end: "bottom center",
+                scrub: false
+            },
+            stagger: 0.12,
+
+        });
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
+
+
     return (
-        <section className="skills-container" id="skills" aria-labelledby="skills-heading">
+        <section
+            className="skills-container"
+            id="skills"
+            aria-labelledby="skills-heading"
+            ref={skillsRef}
+        >
             <div className="skills-header">
                 <h1 id="skills-heading">Technical Skills</h1>
                 <p className="skills-sub">A comprehensive overview of my technical expertise and proficiency levels</p>
@@ -73,13 +109,13 @@ export default function Skills() {
                                 <div className="skill-row" key={name}>
                                     <div className="skill-container">
                                         <span className="skill-name">{name}</span>
-                                        <span className="percent-badge">{level}%</span>
+                                        <AnimatedCounter target={level} />
                                     </div>
-                            
+
                                     <div className="progress-track" aria-hidden>
                                         <div
                                             className="progress-fill"
-                                            style={{ width: `${level}%` }}
+                                            style={{ width: '0%' }}
                                             role="progressbar"
                                             aria-valuemin={0}
                                             aria-valuemax={100}
@@ -93,5 +129,5 @@ export default function Skills() {
                 ))}
             </div>
         </section>
-    )
+    );
 }

@@ -46,10 +46,7 @@ export default function Education() {
             </div>
             <div className="education-timeline-container">
                 {EDUCATION.map((edu) => (
-
-
-                    <div className="education-timeline">
-
+                    <div key={edu.id} className="education-timeline">
                         <div className="education-timeline-header">
                             <div className="header-icon">
                                 <img src={edu.logo} alt="university of yangon logo" />
@@ -65,11 +62,10 @@ export default function Education() {
                             <span><MdOutlineCalendarToday className="education-timeline-icon" />{edu.duration}</span>
                         </div>
                         <div className="timeline-chips">
-                        {edu.achievements.map((item, index) => (
-
-                                <span className="timeline-chip">{item}</span>
+                            {edu.achievements.map((item) => (
+                                <span key={item.id} className="timeline-chip">{item}</span>
                             ))}
-                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
