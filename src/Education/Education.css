@@ -9,101 +9,285 @@
   padding: 20px 0;
 }
 
-.education-header > h1{
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 800;
-    color: #0f172a;
+.education-header > h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
 }
 
-.education-header > p{
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #6b7280;
-    margin-top: -10px;
+.education-header > p {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #6b7280;
+  margin-top: -10px;
 }
 .education-timeline-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-    padding: 20px 40px;
-    border-radius: 30px;
-    gap: 20px;
-    width: 80%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 30px;
+  gap: 24px;
+  width: 90%;
+  max-width: 1200px;
 }
 
-.education-timeline{
-    flex: 1;
-    background-color: #f3f3f3;
-    display: flex;
-    padding: 20px 20px;
-    flex-direction:column ;
-    gap: 30px;
-    border-radius:30px;
+.education-timeline {
+  flex: 1;
+  max-width: 550px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(243, 243, 243, 0.95)
+  );
+  display: flex;
+  padding: 24px 24px;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(67, 143, 143, 0.1);
+  transition: all 0.3s ease;
 }
 
-.education-timeline-header{
-    display: flex;
+.education-timeline:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.education-timeline-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(67, 143, 143, 0.1);
+}
+
+.header-icon {
+  width: 85px;
+  height: 85px;
+  padding: 16px;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(67, 143, 143, 0.08);
+  flex-shrink: 0;
+}
+
+.header-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.header-text > span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.header-text > span:nth-child(2) {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #438f8f;
+}
+
+.education-timeline-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.education-timeline-items > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.98rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.education-timeline-icon {
+  font-size: 1.2rem;
+  color: #438f8f;
+  flex-shrink: 0;
+}
+
+.timeline-chips {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.timeline-chip {
+  background: linear-gradient(135deg, #438f8f, #3a7a7a);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(67, 143, 143, 0.25);
+  transition: all 0.2s ease;
+}
+
+.timeline-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 143, 143, 0.35);
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .education-header > h1 {
+    font-size: 2.5rem;
+  }
+
+  .education-header > p {
+    font-size: 1.6rem;
+  }
+
+  .education-timeline-container {
+    width: 85%;
+  }
+
+  .header-text > span {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .education-container {
+    padding: 15px 0;
+  }
+
+  .education-header > h1 {
+    font-size: 2rem;
+  }
+
+  .education-header > p {
+    font-size: 1.4rem;
+  }
+
+  .education-timeline-container {
+    width: 90%;
     flex-direction: column;
-    flex-direction: row;
+    padding: 15px 20px;
+    border-radius: 25px;
+  }
+
+  .education-timeline {
+    padding: 18px 18px;
+    gap: 25px;
+    border-radius: 25px;
+  }
+
+  .education-timeline-header {
+    flex-direction: column;
     align-items: center;
-    justify-content: start;
-}
-.header-icon{
-    width:100px;
-    height: 100px;
-    padding:20px;
-    margin: 0 20px 0 0 ;
-    background-color: #f1f1f1;
-    border-radius: 40px;
-}
-.header-icon img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 40px;
-}
-.header-text{
-    display: flex;
-    flex-direction: column;
-}
-.header-text>span{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0f172a;
-}
+    text-align: center;
+  }
 
+  .header-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 0 15px 0;
+  }
 
-.education-timeline-items{
-    display:flex;
-    flex-direction: column;
+  .header-text > span {
+    font-size: 1.3rem;
+  }
+
+  .education-timeline-items {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .timeline-chips {
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: start;
-    gap:10px;
-    margin-left: 20px;
+  }
+
+  .timeline-chip {
+    font-size: 0.85rem;
+  }
 }
 
-.education-timeline-icon{
+@media screen and (max-width: 480px) {
+  .education-container {
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .education-header > h1 {
+    font-size: 1.8rem;
+  }
+
+  .education-header > p {
     font-size: 1.2rem;
-    color: #438F8F;
-    margin-right: 10px;
-}
+    margin-top: -5px;
+  }
 
-.timeline-chips{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
-.timeline-chip{
-    background-color: #438F8F;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 4px 10px;
+  .education-timeline-container {
+    width: 95%;
+    padding: 12px 15px;
     border-radius: 20px;
+    gap: 15px;
+  }
+
+  .education-timeline {
+    padding: 15px 15px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+
+  .header-icon {
+    width: 70px;
+    height: 70px;
+    padding: 15px;
+    margin: 0 0 12px 0;
+    border-radius: 30px;
+  }
+
+  .header-icon img {
+    border-radius: 30px;
+  }
+
+  .header-text > span {
+    font-size: 1.1rem;
+  }
+
+  .education-timeline-items {
+    gap: 8px;
+  }
+
+  .education-timeline-icon {
+    font-size: 1rem;
+    margin-right: 8px;
+  }
+
+  .timeline-chip {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
 }

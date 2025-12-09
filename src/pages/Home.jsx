@@ -9,11 +9,19 @@ export default function Home() {
   return (
     <div style={{ scrollBehavior: "smooth" }}>
       <Nav />
-      <Hero />
-      <Skills />
-      <Experience />
-      <Education />
-      <Contact />
+      <section id="about">
+        <Hero />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="experience">
+        <Experience />
+        <Education />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   )
 }

@@ -1,5 +1,17 @@
-body{
-  background:#dcdede ;
+body {
+  background: #dcdede;
   margin: 10px;
+}
 
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    margin: 2px;
+  }
 }

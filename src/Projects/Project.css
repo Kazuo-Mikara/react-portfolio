@@ -1,167 +1,228 @@
-
-.articles{
-  display:flex;
+.articles {
+  display: flex;
   flex-direction: column-reverse;
 }
 
-article  {
-    --img-scale: 1.001;
-    --title-color: black;
-    --link-icon-translate: -20px;
-    --link-icon-opacity: 0;
-    position: relative;
-    border-radius: 16px;
-    box-shadow: none;
-    background: #fff;
-    transform-origin: center;
-    transition: all 0.4s ease-in-out;
-    overflow: hidden;
-    
-  }
-  
-  article a::after {
-    position: absolute;
-    inset-block: 0;
-    inset-inline: 0;
-    cursor: pointer;
-    content: "";
-  }
-  
-  /* basic article elements styling */
-  article h2 {
-    margin: 0 0 18px 0;
-    font-family: "Poppins", cursive;
-    font-size: 1.9rem;
-    letter-spacing: 0.06em;
-    color: var(--title-color);
-    transition: color 0.3s ease-out;
-   
-  }
-  
-  figure {
-    margin: 0;
-    padding: 0;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-  }
-  
-  article img {
-    max-width: 100%;
-    transform-origin: center;
-    transform: scale(var(--img-scale));
-    transition: transform 0.4s ease-in-out;
-  }
-  
-  .article-body {
-    padding: 24px;
-    font-family: "Poppins";
-    
-  }
-  .article-body p:nth-last-child{
-    height: 200px;
-    overflow: scroll;
-    overflow-y:scroll;
-  }
-  
-  article a {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: #28666e;
-  }
-  
-  article a:focus {
-    outline: 1px dotted #28666e;
-  }
-  
-  article a .icon {
-    min-width: 24px;
-    width: 24px;
-    height: 24px;
-    margin-left: 5px;
-    transform: translateX(var(--link-icon-translate));
-    opacity: var(--link-icon-opacity);
-    transition: all 0.3s;
-  }
-  
-  /* using the has() relational pseudo selector to update our custom properties */
-  article:has(:hover, :focus) {
-    --img-scale: 1.1;
-    --title-color: #28666e;
-    --link-icon-translate: 0;
-    --link-icon-opacity: 1;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  }
-  
-  
-  /************************ 
+article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Poppins", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+  font-family: "Poppins";
+}
+.article-body p:nth-last-child {
+  height: 200px;
+  overflow: scroll;
+  overflow-y: scroll;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/************************ 
   Generic layout (demo looks)
   **************************/
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.header {
+  font-size: 2rem;
+  margin-top: 4em;
+  font-family: "Poppins";
+  text-align: center;
+}
+.articles {
+  margin-top: 1rem;
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 100px fr;
+    gap: 2px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Additional Mobile Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .header {
+    font-size: 1.8rem;
+    margin-top: 3em;
   }
 
-  .header{
-    font-size: 2rem;
-    margin-top: 4em;
-    font-family: "Poppins";
-    text-align: center;
+  article h2 {
+    font-size: 1.7rem;
   }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    font-size: 1.6rem;
+    margin-top: 2.5em;
+    padding: 0 15px;
+  }
+
   .articles {
-    margin-top: 1rem;
-    display: grid;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 24px;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
+    padding-inline: 15px;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-  
-  @media screen and (max-width: 960px) {
-    
-    article {
-      container: card/inline-size;
-    }
-    .article-wrapper{
-      display: flex;
-      flex-direction: column;
-    }
-    .article-body p {
-      display: none;
-    }
+
+  article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
   }
-  
-  @container card (min-width: 380px) {
-    .article-wrapper {
-      display: flex;
-           flex-direction: row;
-      grid-template-columns: 100px fr;
-      gap: 2px;
-    }
-    .article-body {
-      padding-left: 0;
-    }
-    figure {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    figure img {
-      height: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
+
+  .article-body {
+    padding: 18px;
   }
-  
-  .sr-only:not(:focus):not(:active) {
-    clip: rect(0 0 0 0); 
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap; 
-    width: 1px;
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    font-size: 1.4rem;
+    margin-top: 2em;
   }
+
+  .articles {
+    padding-inline: 10px;
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
+
+  article {
+    border-radius: 12px;
+  }
+
+  article h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .article-body {
+    padding: 15px;
+  }
+
+  figure {
+    aspect-ratio: 16 / 10;
+  }
+}
