@@ -1,8 +1,8 @@
 import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
-import Resume from "../assets//Htoo_MyatKyaw_Resumee.pdf";
-import image from "../assets/cv_image.png"
+import Resume from "../assets//Htoo_Myat_Kyaw.pdf";
+import image from "../assets/hmk.jpg"
 import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
 export default function Hero() {
     const handleDownload = (e) => {
@@ -12,7 +12,7 @@ export default function Hero() {
             const link = document.createElement('a');
             link.href = Resume;
             // set a sensible filename for the downloaded file
-            link.download = 'Htoo_MyatKyaw_Resume.pdf';
+            link.download = 'Htoo_Myat_Kyaw_Resume.pdf';
             document.body.appendChild(link);
             link.click();
             link.remove();
