@@ -67,7 +67,7 @@ export function Nav() {
         <ul>
           <li><a href='#about' onClick={() => setIsMenuOpen(false)}>about</a></li>
           <li><a href='#skills' onClick={() => setIsMenuOpen(false)}>skills</a></li>
-          <li><NavLink to='/projects' onClick={() => setIsMenuOpen(false)} className={({ isActive }) => (isActive ? 'active' : '')}>projects</NavLink></li>
+          {/* <li><NavLink to='/projects' onClick={() => setIsMenuOpen(false)} className={({ isActive }) => (isActive ? 'active' : '')}>projects</NavLink></li> */}
           <li><a href='#experience' onClick={() => setIsMenuOpen(false)}>experience</a></li>
           <li><a href='#contact' onClick={() => setIsMenuOpen(false)}>contact</a></li>
 
