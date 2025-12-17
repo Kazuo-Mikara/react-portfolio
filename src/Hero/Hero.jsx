@@ -56,7 +56,7 @@ export default function Hero() {
                         <button type="button" onClick={handleDownload} className="description-button ">
                             <span className='btn2'>Download Resume</span>
                         </button>
-                        <p>View <a href="#" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
+                        <p>View <a href="https://zenix-edu.netlify.app/home" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
                     </div>
 
                     <div className='nav-icons'>
