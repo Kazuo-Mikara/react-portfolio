@@ -3,6 +3,17 @@ body {
   margin: 10px;
 }
 
+.home {
+  position: relative;
+}
+
+.theme-toggle {
+  position: fixed;
+  z-index: 1001;
+  bottom: 100px;
+  right: 40px;
+}
+
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
   body {

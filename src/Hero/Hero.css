@@ -17,16 +17,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 400px;
 }
 
 .hero-image img {
   width: 200px;
   height: 200px;
-  border-radius: 400px;
+  border-radius: 500px;
   object-fit: cover;
-  box-shadow: 11px 11px 10px #c2c3c3, -11px -11px 10px #f6f9f9;
   margin-bottom: 20px;
 }
 
@@ -80,7 +78,7 @@
 }
 
 .resume_link {
-  color: #509494;
+  color: #1b1b1b;
   text-decoration: none;
 }
 
@@ -96,77 +94,89 @@
   margin: 4px 0 15px 0;
 }
 .description-button {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  align-items: center;
-  padding: 20px 20px;
-  border-radius: 15px;
-  font-family: "Montserrat", sans-serif;
-  box-shadow: 0px 6px 0px 0px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  font-size: 18px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
   cursor: pointer;
-  border: none;
-}
-.description-button:nth-child(1) {
-  background: #000;
-  color: #fff;
+  will-change: box-shadow, transform;
+  background: var(--button-color);
+  box-shadow: 0px 0.01em 0.01em rgba(7, 0, 22, 0.4),
+    0px 0.3em 0.7em -0.01em rgba(5, 0, 14, 0.3),
+    inset 0px -0.01em 0px rgba(0, 3, 20, 0.5);
+  padding: 0 2em;
+  border-radius: 0.4em;
+  color: var(--button-text);
+  height: 2.6em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.description-button:nth-child(2) {
-  background: #509494;
-  color: #fff;
+.description-button:hover {
+  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.4),
+    0px 0.4em 0.7em -0.1em rgba(0, 0, 0, 0.3),
+    inset 0px -0.1em 0px rgba(0, 3, 20, 0.5);
+  transform: translateY(-0.1em);
 }
 
-.btn2:active {
-  background: #509494;
-  color: #fff;
+.description-button:active {
+  box-shadow: inset 0px 0.1em 0.6em rgba(0, 3, 20, 0.5);
+  transform: translateY(0em);
 }
-.description-button:after {
-  content: " ";
-  width: 0%;
-  height: 100%;
-  background: #fff;
+
+.description-link {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.description-link::before,
+.description-link::after {
+  content: "";
   position: absolute;
-  transition: all 0.4s ease-in-out;
-  right: 0;
-}
-.description-button:nth-child(2):after {
-  content: " ";
-  width: 0%;
-  height: 100%;
-  background: #fff;
-  position: absolute;
-  transition: all 0.4s ease-in-out;
-  right: 0;
-}
-.description-button:hover::after {
-  border-radius: 15px;
-  right: auto;
+  width: 100%;
   left: 0;
-  width: 100%;
+}
+.description-link::before {
+  background-color: var(--accent-color);
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.description-link::after {
+  content: attr(data-replace);
+  height: 100%;
+  top: 0;
+  transform-origin: 100% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: var(--accent-color);
 }
 
-.description-button > span {
-  text-align: center;
+.description-link:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+.description-link:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.description-link span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.description-link:hover span {
+  transform: translate3d(-200%, 0, 0);
+}
+
+.description-link {
   text-decoration: none;
-  width: 100%;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  z-index: 20;
-  transition: all 0.3s ease-in-out;
-}
-
-.description-button:hover > span {
-  color: #000;
-  animation: scaleUp 0.3s ease-in-out;
-}
-
-.description-button:nth-child(2):hover > span {
-  color: #000;
-  animation: scaleUp 0.3s ease-in-out;
+  color: var(--primary-text);
+  font-weight: 700;
+  vertical-align: top;
 }
 
 @keyframes scaleUp {
@@ -184,6 +194,7 @@
 }
 
 .nav-icons {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,7 +213,7 @@
   justify-content: center;
   padding: 20px 20px;
   font-size: 1rem;
-  background-color: #fff;
+  background-color: var(--nav-icons);
   color: black;
 }
 

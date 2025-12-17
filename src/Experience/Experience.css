@@ -16,7 +16,6 @@
 
 .experience-header h1 {
   font-size: 3rem;
-  color: #0f172a;
 }
 
 .experience-header p {
@@ -34,10 +33,9 @@
   padding: 20px 40px;
   border-radius: 30px;
   gap: 20px;
-  background: rgba(233, 233, 233, 0.6);
+  background: var(--card-bg);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  border: 2px solid rgba(255, 255, 251, 1);
   width: 80%;
 }
 
@@ -91,12 +89,12 @@
 .timeline-content > ul > li {
   list-style-type: disc;
   font-size: 1rem;
-  color: #374151;
+  color: var(--text-secondary);
   margin: 8px 0;
 }
 
 .timeline-content > ul > li::marker {
-  color: #438f8f;
+  color: var(--accent-color);
   font-size: 1.4rem;
 }
 

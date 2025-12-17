@@ -41,12 +41,12 @@ export default function Education() {
     return (
         <div className="education-container">
             <div className="education-header">
-                <h1>Education</h1>
-                <p>My academic background and qualifications</p>
+                <h1 className="reveal-type">Education</h1>
+                <p className="reveal-type">My academic background and qualifications</p>
             </div>
             <div className="education-timeline-container">
                 {EDUCATION.map((edu) => (
-                    <div key={edu.id} className="education-timeline">
+                    <div key={edu.id} className="education-timeline reveal-card">
                         <div className="education-timeline-header">
                             <div className="header-icon">
                                 <img src={edu.logo} alt="university of yangon logo" />

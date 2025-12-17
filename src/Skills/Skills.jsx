@@ -70,11 +70,11 @@ export default function Skills() {
             ease: "sine.inOut",
             scrollTrigger: {
                 trigger: skillsRef.current,
-                start: " top center",
-                end: "bottom center",
-                scrub: false
+                start: "top 80%",
+                end: "bottom 90%",
+                scrub: false,
             },
-            stagger: 0.12,
+            stagger: 0.1,
 
         });
 
@@ -92,13 +92,13 @@ export default function Skills() {
             ref={skillsRef}
         >
             <div className="skills-header">
-                <h1 id="skills-heading">Technical Skills</h1>
-                <p className="skills-sub">A comprehensive overview of my technical expertise and proficiency levels</p>
+                <h1 id="skills-heading" className="reveal-type">Technical Skills</h1>
+                <p className="skills-sub reveal-type">A comprehensive overview of my technical expertise and proficiency levels</p>
             </div>
 
-            <div className="skills-grid">
+            <div className="skills-grid ">
                 {CATEGORIES.map((cat) => (
-                    <article key={cat.id} className="skill-card">
+                    <article key={cat.id} className="skill-card reveal-type">
                         <header className="card-header">
                             <div className="card-icon">{cat.icon}</div>
                             <h3 className="card-title">{cat.title}</h3>
@@ -109,7 +109,7 @@ export default function Skills() {
                                 <div className="skill-row" key={name}>
                                     <div className="skill-container">
                                         <span className="skill-name">{name}</span>
-                                        <AnimatedCounter target={level} />
+                                        <span className="percent-badge"> {level}</span>
                                     </div>
 
                                     <div className="progress-track" aria-hidden>

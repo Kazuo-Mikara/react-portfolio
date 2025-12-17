@@ -1,19 +1,118 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montaga&display=swap");
 
+/* ============================================
+   CSS Variables for Light/Dark Theme
+   ============================================ */
+:root {
+  /* Light Mode Colors (default) */
+  --bg-primary: oklch(0.9551 0 0);
+  /* --bg-primary: oklch(0.98 0 0); */
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f0f2f5;
+  --text-primary: #1a1a2e;
+  --text-secondary: #333333;
+  --text-tertiary: #666666;
+  --chip-text: #f5f5f5;
+  --chip-color: #438f8f;
+  --accent-color: #438f8f;
+  --accent-hover: #367070;
+  --accent-light: rgba(67, 143, 143, 0.12);
+  --accent-lighter: rgba(67, 143, 143, 0.08);
+  --progress-track: #e4dfdf;
+  --progress-fill: #438f8f;
+  --border-color: rgba(67, 143, 143, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow-heavy: rgba(0, 0, 0, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --button-color: #438f8f;
+  --nav-icons: oklch(0.97 0.01 80.72);
+  --button-text: #ffffff;
+  --scrollbar-track: oklch(0.98 0 0);
+  --scrollbar-thumb: #438f8f;
+  --scrollbar-thumb-hover: #555;
+}
+
+/* Dark Mode Colors */
+html.dark {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
+  --text-primary: #e4e5f1;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #b0b0b0;
+  --chip-text: #eeeeee;
+  --chip-color: #1a1a2e;
+  --accent-color: #5bbfbf;
+  --accent-hover: #7dd4d4;
+  --accent-light: rgba(91, 191, 191, 0.2);
+  --accent-lighter: rgba(91, 191, 191, 0.1);
+  --progress-track: #c7c7c7;
+  --progress-fill: #0f0f1a;
+  --border-color: rgba(91, 191, 191, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-heavy: rgba(0, 0, 0, 0.5);
+  --card-bg: #232946;
+  --button-color: #232946;
+  --button-text: #fafafa;
+  --nav-icons: oklch(0.98 0 0);
+  --scrollbar-track: #1a1a2e;
+  --scrollbar-thumb: #f5f5f5;
+  --scrollbar-thumb-hover: #7dd4d4;
+}
+
+/* Apply theme colors to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.description-text {
+  color: var(--text-primary);
+}
+
+.experience-header {
+  color: var(--text-primary);
+}
 html {
   scroll-behavior: smooth;
 }
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 1px; /* Width of the scrollbar */
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background of the scrollbar track */
+  background: var(--scrollbar-track);
+  transition: background 0.4s ease;
 }
 ::-webkit-scrollbar-thumb {
-  background: #438f8f; /* Color of the draggable part of the scrollbar */
-  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  transition: background 0.4s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color when hovering over the scrollbar thumb */
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Smooth transitions for all themed elements */
+*,
+*::before,
+*::after {
+  transition: background-color 0.8s ease, border-color 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+/* Ensure text doesn't transition awkwardly */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+li {
+  transition: color 0.8s ease-in-out;
 }

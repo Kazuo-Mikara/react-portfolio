@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
+import ThemeToggle from '../components/ThemeToggle';
 import './Nav.css'
 export function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +57,7 @@ export function Nav() {
         love the life you live <br />
         live the life you love
       </div>
+
       <div className='menu-button' onClick={toggleMenu}>
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
           <span></span>
@@ -67,13 +69,10 @@ export function Nav() {
         <ul>
           <li><a href='#about' onClick={() => setIsMenuOpen(false)}>about</a></li>
           <li><a href='#skills' onClick={() => setIsMenuOpen(false)}>skills</a></li>
-          {/* <li><NavLink to='/projects' onClick={() => setIsMenuOpen(false)} className={({ isActive }) => (isActive ? 'active' : '')}>projects</NavLink></li> */}
           <li><a href='#experience' onClick={() => setIsMenuOpen(false)}>experience</a></li>
           <li><a href='#contact' onClick={() => setIsMenuOpen(false)}>contact</a></li>
-
         </ul>
       </div>
-
     </div >
   )
 }

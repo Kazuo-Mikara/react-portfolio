@@ -53,13 +53,10 @@ export default function Hero() {
                         {/* <p>Download my resume<a href={Resume} className='resume_link'>&nbsp; here</a>.</p> */}
                     </div>
                     <div className='button-group'>
-                        <button className="description-button">
-                            <span>View My Work</span>
-                        </button>
                         <button type="button" onClick={handleDownload} className="description-button ">
                             <span className='btn2'>Download Resume</span>
                         </button>
-
+                        <p>View <a href="#" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
                     </div>
 
                     <div className='nav-icons'>
