@@ -32,16 +32,16 @@ const App = () => {
             markers: false,
             toggleActions: 'play play reverse reverse'
           },
-          // scaleY: 0,
-          // y: -20,
-          // transformOrigin: "top",
-          // stagger: 0.11,
-          // duration: 1,
-          // ease: "power3.out",
-          opacity: 0.3,
-          stagger: 0.1,
+          scaleY: 0,
+          y: -20,
+          transformOrigin: "top",
+          stagger: 0.11,
           duration: 1,
           ease: "power3.out",
+          // opacity: 0.3,
+          // stagger: 0.1,
+          // duration: 1,
+          // ease: "power3.out",
 
         }
       )
@@ -114,8 +114,8 @@ const App = () => {
   }
   useEffect(() => {
     smoothTextScroll()
-    smoothBoxScroll()
-    smoothEducationCardScroll()
+    // smoothBoxScroll()
+    // smoothEducationCardScroll()
   }, [])
 
   const lenis = useLenis((lenis) => {

@@ -4,18 +4,19 @@ import { FaRegBuilding } from "react-icons/fa";
 import { TfiLocationPin } from "react-icons/tfi";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 const EXPERIENCE = [
+
     {
         id: 1,
-        jobTitle: "Mid-level Data Collector",
+        jobTitle: "Junior Full-Stack Web Developer",
         current: false,
-        company: "Double-Wave/HOME",
+        company: "Compass Global",
         location: "Yangon",
-        duration: "Nov-2023 - August 2025",
+        duration: "Sep-2022 - Jan-2024",
         responsibilities: [
-            "Collected and validated data from various sources, ensuring accuracy and completeness.",
-            " Organized and maintained data in databases and spreadsheets",
-            "Performed data validation and cleaning to ensure data quality",
-            "Collaborated with team members to gather requirements and deliver data-driven insights.",
+            "Developed and optimized production-ready web applications using React, Next.js, and TypeScript, ensuring robust code quality and minimizing runtime errors through strict type-checking and custom interfaces.",
+            "Engineered responsive, mobile-first interfaces using Tailwind CSS, maintaining high-fidelity layouts and consistent branding across complex marketing landing pages and internal admin dashboards.",
+            "Built and documented RESTful APIs using Express.js to facilitate real-time communication between internal data services and external third-party integrations.",
+            "Participated in the full Software Development Life Cycle (SDLC) within an Agile environment, utilizing Git for version control and Postman for rigorous API testing and documentation.",
         ],
     },
     {
@@ -33,9 +34,23 @@ const EXPERIENCE = [
         ],
     },
     {
-        id: 2,
+        id: 3,
+        jobTitle: "Mid-level Data Collector",
+        current: false,
+        company: "Double-Wave/HOME",
+        location: "Yangon",
+        duration: "Nov-2023 - August 2025",
+        responsibilities: [
+            "Collected and validated data from various sources, ensuring accuracy and completeness.",
+            " Organized and maintained data in databases and spreadsheets",
+            "Performed data validation and cleaning to ensure data quality",
+            "Collaborated with team members to gather requirements and deliver data-driven insights.",
+        ],
+    },
+    {
+        id: 4,
         jobTitle: "Freelance Wordpress Developer",
-        current: true,
+        current: false,
         company: "M.Wolf Marketing Agency",
         location: "Arizona, USA (Remote)",
         duration: "Sep 2025 - Present",
