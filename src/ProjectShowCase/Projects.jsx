@@ -20,6 +20,26 @@ import {
 
 const PROJECTS_DATA = [
     {
+        title: "Phamarcy E-commerce",
+        techstack: "Pure PHP, MySQL, Bootstrap, TailwindCSS,",
+        About:
+            "A dynamic e-commerce platform that allows users to browse and purchase products. It features a user-friendly interface, secure payment processing, and a robust backend architecture for a seamless shopping experience.",
+        Link: "https://github.com/Kazuo-Mikara/phamarcy_Ecommerce",
+        thumbnail: "@/app/assets/Pharmacy/Pharmacy1.png",
+        images: [
+            { id: 1, src: "/assets/Pharmacy/Pharmacy1.png" },
+            { id: 2, src: "/assets/Pharmacy/Pharmacy2.png" },
+            { id: 3, src: "/assets/Pharmacy/Pharmacy3.png" },
+            { id: 4, src: "/assets/Pharmacy/Pharmacy4.png" },
+            { id: 5, src: "/assets/Pharmacy/Pharmacy5.png" },
+            { id: 6, src: "/assets/Pharmacy/Pharmacy6.png" },
+            { id: 7, src: "/assets/Pharmacy/Pharmacy7.png" },
+            { id: 8, src: "/assets/Pharmacy/Pharmacy8.png" },
+            { id: 9, src: "/assets/Pharmacy/Pharmacy9.png" },
+
+        ],
+    },
+    {
         title: "Kazuo Travels",
         techstack: "React, OpenStreet API, Leaflet.js, TailwindCSS",
         About:
@@ -27,10 +47,10 @@ const PROJECTS_DATA = [
         Link: "https://kazuo-travels.vercel.app/",
         thumbnail: "@/app/assets/Kazuo_Travels1.png",
         images: [
-            { id: 1, src: "/assets/Kazuo_Travels1.png" },
-            { id: 2, src: "/assets/Kazuo_Travels2.png" },
-            { id: 3, src: "/assets/Kazuo_Travels3.png" },
-            { id: 4, src: "/assets/Kazuo_Travels4.png" },
+            { id: 1, src: "/assets/Kazuo_Travels/Kazuo_Travels1.png" },
+            { id: 2, src: "/assets/Kazuo_Travels/Kazuo_Travels2.png" },
+            { id: 3, src: "/assets/Kazuo_Travels/Kazuo_Travels3.png" },
+            { id: 4, src: "/assets/Kazuo_Travels/Kazuo_Travels4.png" },
         ],
     },
     {
@@ -39,7 +59,7 @@ const PROJECTS_DATA = [
         About:
             "A comprehensive Learning Management System (LMS) designed to bridge the gap between instructors and students. Features secure authentication, course progress tracking, and a robust backend architecture for a seamless educational experience.",
         Link: "https://zenix-edu.netlify.app/home",
-        thumbnail: "@/app/assets/Kazuo_Travels1.png",
+        thumbnail: "@/app/assets/Zenix/Zenix1.png",
         images: [
             { id: 1, src: "/assets/Zenix/Zenix1.png" },
             { id: 2, src: "/assets/Zenix/Zenix2.png" },
@@ -66,6 +86,17 @@ const PROJECTS_DATA = [
             { id: 5, src: "/assets/Crestview/Crestview5.png" },
             { id: 6, src: "/assets/Crestview/Crestview6.png" },
             { id: 7, src: "/assets/Crestview/Crestview7.png" },
+        ],
+    },
+    {
+        title: "Mya Khwar Nyo - AI Assited Plant Identification App",
+        techstack: "React Native, Native Wind, Appwrite, YOLO V8, Pytorch, Cloudinary",
+        About:
+            "Mya Khwar Nyo is an AI-assisted plant identification app that allows users to identify plants by taking photos of them. The app uses YOLO V8 and Pytorch for object detection and plant identification, and Cloudinary for image storage.",
+        Link: "#",
+        thumbnail: "@/app/assets/Kazuo_Travels1.png",
+        images: [
+            { id: 1, src: "/assets/MyaKhwarNyo/UnderConstruction.png" },
         ],
     },
 ];
