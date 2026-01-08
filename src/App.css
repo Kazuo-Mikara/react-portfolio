@@ -1,6 +1,5 @@
 body {
-  background: #dcdede;
-  margin: 10px;
+  margin: 0;
 }
 
 .home {
@@ -12,17 +11,4 @@ body {
   z-index: 1001;
   bottom: 100px;
   right: 40px;
-}
-
-/* Mobile Responsive Styles */
-@media screen and (max-width: 768px) {
-  body {
-    margin: 5px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  body {
-    margin: 2px;
-  }
 }

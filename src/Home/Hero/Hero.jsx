@@ -1,8 +1,9 @@
 import React from 'react'
 import "./Hero.css"
 import Typewriter from 'typewriter-effect'
-import Resume from "../assets//Htoo_Myat_Kyaw.pdf";
-import image from "../assets/hmk.jpg"
+import { Link } from 'react-router-dom';
+import Resume from "../../assets//Htoo_Myat_Kyaw.pdf";
+import image from "../../assets/hmk.jpg"
 import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
 export default function Hero() {
     const handleDownload = (e) => {
@@ -56,7 +57,9 @@ export default function Hero() {
                         <button type="button" onClick={handleDownload} className="description-button ">
                             <span className='btn2'>Download Resume</span>
                         </button>
-                        <p>View <a href="https://zenix-edu.netlify.app/home" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
+
+                        {/* <p>View <a href="https://zenix-edu.netlify.app/home" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p> */}
+                        <p>View <a href="#projects" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
                     </div>
 
                     <div className='nav-icons'>

@@ -76,11 +76,11 @@ export default function Experience() {
                 {EXPERIENCE.map((exp) => (
                     <div className={exp.current ? `experience-timeline current-working reveal-box` : `experience-timeline reveal-box`} key={exp.id}>
 
-                        <div className="timeline-header ">
+                        <div className="timeline-header " key={exp.id}>
                             <span>{exp.jobTitle}</span>
                             {exp.current ? <span className="current-occupation">Current</span> : ''}
                         </div>
-                        <div className="timeline-items ">
+                        <div className="timeline-items " >
                             <span className="timeline-item"><FaRegBuilding className="timeline-icon" />{exp.company}</span>
                             <span className="timeline-item"><TfiLocationPin className="timeline-icon" />{exp.location}</span>
                             <span className="timeline-item"><MdOutlineCalendarMonth className="timeline-icon" />{exp.duration}</span>
@@ -89,7 +89,7 @@ export default function Experience() {
                         <div className="timeline-content ">
                             {exp.responsibilities.map((item, index) => (
 
-                                <ul>
+                                <ul key={index}>
                                     <li className="">{item}</li>
 
                                 </ul>

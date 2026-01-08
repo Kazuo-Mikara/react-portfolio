@@ -1,7 +1,7 @@
 import React from "react";
 import "./Education.css";
-import YU from "../assets/YU.png"
-import UoPeople from "../assets/UoPeople.jpg"
+import YU from "../../assets/YU.png"
+import UoPeople from "../../assets/UoPeople.jpg"
 import { LuGraduationCap } from "react-icons/lu";
 import { VscLocation } from "react-icons/vsc";
 import { MdOutlineCalendarToday } from "react-icons/md";

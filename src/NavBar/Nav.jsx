@@ -65,14 +65,15 @@ export function Nav() {
           <span></span>
         </div>
       </div>
-      <div className={navLinksClass}>
-        <ul>
+      <nav className={navLinksClass}>
+        <ul className='navbar'>
           <li><a href='#about' onClick={() => setIsMenuOpen(false)}>about</a></li>
           <li><a href='#skills' onClick={() => setIsMenuOpen(false)}>skills</a></li>
           <li><a href='#experience' onClick={() => setIsMenuOpen(false)}>experience</a></li>
+          <li><a href='#projects' onClick={() => setIsMenuOpen(false)}>projects</a></li>
           <li><a href='#contact' onClick={() => setIsMenuOpen(false)}>contact</a></li>
         </ul>
-      </div>
+      </nav>
     </div >
   )
 }
