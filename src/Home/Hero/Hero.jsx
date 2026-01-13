@@ -22,10 +22,20 @@ export default function Hero() {
             const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
             // Left side text animation
-            tl.fromTo('.hero-left .line-1',
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, delay: 0.3 }
-            )
+            tl.fromTo('.hero-video', {
+                x: 1000,
+                y: 100,
+                duration: 0,
+            }, {
+                x: 0,
+                y: 0,
+                duration: 3,
+            })
+
+                .fromTo('.hero-left .line-1',
+                    { y: 100, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1 }
+                )
                 .fromTo('.hero-left .line-2',
                     { y: 100, opacity: 0 },
                     { y: 0, opacity: 1, duration: 1 },
@@ -54,8 +64,8 @@ export default function Hero() {
                 )
                 // Bottom bar animation
                 .fromTo('.hero-bottom',
-                    { x: 30, opacity: 0 },
-                    { x: 0, opacity: 1, duration: 0.6 },
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.6 },
                     "-=0.3"
                 );
         }, heroRef);

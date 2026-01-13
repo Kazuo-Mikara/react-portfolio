@@ -316,7 +316,9 @@
   .hero-left .line-2 {
     font-size: 4.5rem;
   }
-
+  .hero-availability-container {
+    right: 680px;
+  }
   .hero-right .line-1 {
     font-size: 3.5rem;
   }
@@ -334,7 +336,9 @@
     align-items: flex-start;
     gap: 60px;
   }
-
+  .hero-availability-container {
+    right: 620px;
+  }
   .hero-left {
     max-width: 100%;
   }
@@ -380,6 +384,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .hero-availability-container {
+    right: 780px;
+  }
   .hero-content {
     padding: 90px 25px 30px;
     gap: 40px;
@@ -435,6 +442,9 @@
 
   .hero-left .text-block {
     margin-bottom: 25px;
+  }
+  .hero-availability-container {
+    display: none;
   }
 
   .hero-left .line-1,
