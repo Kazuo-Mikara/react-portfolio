@@ -1,103 +1,170 @@
-import React from 'react'
-import "./Hero.css"
-import Typewriter from 'typewriter-effect'
-import { Link } from 'react-router-dom';
-import Resume from "../../assets//Htoo_Myat_Kyaw.pdf";
-import image from "../../assets/hmk.jpg"
-import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
+import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Resume from "../../assets/Htoo_Myat_Kyaw.pdf";
+import "./Hero.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero() {
-    const handleDownload = (e) => {
-        // programmatically create an anchor to trigger the download without an <a> tag in the JSX
-        e.preventDefault();
-        try {
-            const link = document.createElement('a');
-            link.href = Resume;
-            // set a sensible filename for the downloaded file
-            link.download = 'Htoo_Myat_Kyaw_Resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-        } catch (err) {
-            // fallback: open in new tab
-            window.open(Resume, '_blank', 'noopener');
-        }
-    }
+    const heroRef = useRef(null);
+    const videoRef = useRef(null);
+
+    const { scrollY } = useScroll();
+    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+    const scale = useTransform(scrollY, [0, 400], [1, 1.15]);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+            // Left side text animation
+            tl.fromTo('.hero-left .line-1',
+                { y: 100, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3 }
+            )
+                .fromTo('.hero-left .line-2',
+                    { y: 100, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1 },
+                    "-=0.7"
+                )
+                .fromTo('.hero-description',
+                    { y: 40, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    "-=0.5"
+                )
+                // Right side text animation
+                .fromTo('.hero-right .line-1',
+                    { y: 100, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1 },
+                    "-=1"
+                )
+                .fromTo('.hero-right .line-2',
+                    { y: 100, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1 },
+                    "-=0.7"
+                )
+                // Bottom bar animation
+                .fromTo('.hero-bottom',
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.6 },
+                    "-=0.3"
+                );
+        }, heroRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    const scrollToProjects = () => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
-        <div className='hero-main' id="home" >
-            <div className='hero-body'>
+        <section className="hero-section" id="about" ref={heroRef}>
+            {/* Video Background */}
+            <motion.div
+                className="video-background"
+                style={{ scale }}
+            >
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="hero-video"
+                >
+                    <source src="/assets/animated_hero.mp4" type="video/mp4" />
+                </video>
 
-                <div className='hero-image'>
-                    <img src={image} alt='profile-pic' />
+                {/* Subtle overlay for text readability */}
+                <div className="video-overlay" />
+                <div className="video-gradient-left" />
+                <div className="video-gradient-right" />
+                <div className="video-gradient-bottom" />
+            </motion.div>
+
+            {/* Main Content */}
+            <motion.div
+                className="hero-content"
+                style={{ opacity }}
+            >
+                {/* Left Side Text */}
+                <div className="hero-left">
+                    <div className="text-block">
+                        <h1 className="hero-title">
+                            <span className="line-1">Hello,</span>
+                            <span className="line-2 italic">I'm Htoo</span>
+                        </h1>
+                    </div>
+                    <p className="hero-description">
+                        I specialize in transforming raw data into
+                        actionable insights and building modern web
+                        experiences. Available for opportunities.
+                    </p>
                 </div>
 
-                <div className='heading'>
-                    <span >HTOO MYAT KYAW </span>
-                    <span >Mid-level Data Collector & Developer</span>
-                    <span >Quality Assurance | Frontend Development | Data Analysis</span>
-
+                {/* Right Side Text */}
+                <div className="hero-right">
+                    <div className="text-block">
+                        <span className="line-1">Developer</span>
+                        <span className="line-2 italic">&amp; Data Collector</span>
+                    </div>
                 </div>
 
-                <div className="description">
-                    {/* 
-                    <span><Typewriter className="typewriter"
-                            options={{
-                                strings: ["SQL, Python, R and excel ,tablaeu ,Power BI,React, HTML5, CSS3, JavaScript, Git, GitHub, Figma,WordPress,Elementor"],
-                                autoStart: true,
-                                delay:75,
-                                loop: true,
-                            }}
-                            />
-
-                        </span> */}
-                    <div className='description-text'>
-                        <p>Results-driven professional with experience in data collection, quality assurance, and frontend development. Proficient in HTML5, React, and modern web technologies.</p>
-                        {/* <p>Download my resume<a href={Resume} className='resume_link'>&nbsp; here</a>.</p> */}
-                    </div>
-                    <div className='button-group'>
-                        <button type="button" onClick={handleDownload} className="description-button ">
-                            <span className='btn2'>Download Resume</span>
-                        </button>
-
-                        {/* <p>View <a href="https://zenix-edu.netlify.app/home" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p> */}
-                        <p>View <a href="#projects" id="style-2" className='description-link' data-replace="My Work"><span>My Work</span></a></p>
+                {/* Bottom Bar */}
+                <div className="hero-bottom">
+                    {/* Left - Branding */}
+                    <div className="bottom-left">
+                        <span className="brand-name">Htoo Myat Kyaw</span>
+                        <span className="brand-role">DEVELOPER</span>
                     </div>
 
-                    <div className='nav-icons'>
-                        <a href='https://github.com/Kazuo-Mikara' target='_blank'><FiGithub /> </a>
-                        <a href='www.linkedin.com/in/kazuooh/' target='_blank'><FiLinkedin /> </a>
-                        <a href='https://www.instagram.com/k_4_kazuo/?hl=en' target='_parent'><FiInstagram /> </a>
-                        <a href='https://www.facebook.com/hizuo976' target='_blank'><FiFacebook /> </a>
+                    {/* Center - Social Links */}
+                    <div className="bottom-center">
+                        <motion.a
+                            href="https://github.com/Kazuo-Mikara"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -3 }}
+                        >
+                            <FaGithub />
+                        </motion.a>
+                        <motion.a
+                            href="https://www.linkedin.com/in/htoo-myat-kyaw-47316828a/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -3 }}
+                        >
+                            <FaLinkedin />
+                        </motion.a>
+                        <motion.a
+                            href="https://www.facebook.com/profile.php?id=100077291498498"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -3 }}
+                        >
+                            <FaFacebook />
+                        </motion.a>
                     </div>
 
-
-                    {/* <div className="button-group">
-                    
-                        <button>
-                            <div className="svg-wrapper-1">
-                                <div className="svg-wrapper">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        width="24"
-                                        height="24"
-                                    >
-                                        <path fill="none" d="M0 0h24v24H0z"></path>
-                                        <path
-                                            fill="currentColor"
-                                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                                        ></path>
-                                         
-                                    </svg> 
-                                     <i> <FiFileText /> </i>
-                                </div>
-                            </div>
-                             <a href={Resume} download>resume</a>
-                        </button>
-
-                    </div> */}
+                    {/* Right - CTA Button */}
+                    <div className="bottom-right">
+                        <motion.button
+                            className="cta-button"
+                            onClick={scrollToProjects}
+                            whileHover={{ scale: 1.02, x: 5 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            View Work
+                            <FiArrowRight className="arrow" />
+                        </motion.button>
+                    </div>
                 </div>
-            </div>
-        </div>
-    )
-
+            </motion.div>
+        </section>
+    );
 }

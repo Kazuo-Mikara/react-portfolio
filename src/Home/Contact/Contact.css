@@ -1,337 +1,632 @@
+/* ============================================
+   Futuristic Cyber Contact Section
+   ============================================ */
+
+.contact-section {
+  position: relative;
+  padding: 100px 20px 60px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Background */
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-bg .grid-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 245, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb-cyan {
+  width: 400px;
+  height: 400px;
+  background: #00f5ff;
+  top: 10%;
+  right: -10%;
+}
+
+.orb-purple {
+  width: 300px;
+  height: 300px;
+  background: #bf00ff;
+  bottom: 10%;
+  left: -5%;
+  animation-delay: 10s;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -30px);
+  }
+}
+
+/* Container */
 .contact-container {
-  width: 100%;
-  font-family: "Nunito";
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.contact-heading-container {
+/* Header */
+.contact-header {
   text-align: center;
-  color: var(--text-primary);
+  margin-bottom: 60px;
 }
 
-.contact-heading {
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.contact-sub-heading {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-top: -10px;
-}
-
-.contact-body {
-  display: flex;
-  width: 80%;
-  padding: 20px;
-  justify-content: center;
-  align-items: start;
-}
-
-.contact-info {
-  padding: 10px;
-  margin: 10px;
-  flex: 1 1 55%;
-}
-
-.contact-info-heading-container {
-  display: flex;
-  flex-direction: column;
-  color: var(--text-primary);
-  justify-content: center;
-  align-items: start;
-}
-.contact-info-heading {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.contact-info-sub-heading {
-  font-size: 1.14rem;
-  font-weight: 400;
-}
-
-.contact-detail-container {
-  display: flex;
-  width: 100%;
-  border-radius: 12px;
-  padding: 16px 18px;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  color: var(--card-text);
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 18px;
-  gap: 18px;
-}
-
-.contact-detail-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-/* Right column — contact form card */
-.sendmail-section {
-  flex: 0 0 40%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.sendmail-card {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.sendmail-heading {
-  margin: 0 0 8px 0;
-  font-size: 1.5rem;
-  color: var(--text-primary);
-}
-
-.sendmail-sub {
-  color: var(--text-secondary);
-  margin-bottom: 18px;
-}
-
-.sendmail-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sendmail-button {
+.contact-header .header-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: var(--button-color); /* blue */
-  color: var(--button-text);
-  border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 16px;
+  font-size: 1.8rem;
+  color: #00f5ff;
+  margin-bottom: 20px;
 }
 
-.sendmail-button-icon {
+.contact-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+.contact-subtitle {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 0 0 25px 0;
+}
+
+.header-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.header-decoration .line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+}
+
+.header-decoration .diamond {
+  width: 10px;
+  height: 10px;
+  background: #00f5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px #00f5ff;
+}
+
+/* Contact Body */
+.contact-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-header {
+  margin-bottom: 10px;
+}
+
+.info-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.info-subtitle {
+  font-family: "Rajdhani", sans-serif;
   font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-.sendmail-input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--card-bg);
-  color: var(--accent-color);
+/* Contact Cards */
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.sr-only {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
+.contact-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 25px;
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.4s ease;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 1024px) {
-  .contact-heading {
-    font-size: 2.5rem;
-  }
+.contact-card:hover {
+  border-color: var(--accent);
+}
 
-  .contact-sub-heading {
-    font-size: 1.6rem;
-  }
+.contact-card .card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
 
-  .contact-body {
-    width: 85%;
+.contact-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.contact-card .card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.card-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.card-value {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.card-arrow {
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-card .card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Contact Form Container */
+.contact-form-container {
+  position: relative;
+}
+
+.form-card {
+  position: relative;
+  padding: 40px;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00f5ff, #bf00ff, #ff00aa);
+}
+
+.form-header {
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.form-header p {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.input-wrapper.focused .input-label {
+  color: #00f5ff;
+}
+
+.message-input {
+  width: 100%;
+  padding: 18px 20px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  border-radius: 12px;
+  resize: vertical;
+  min-height: 120px;
+  transition: all 0.3s ease;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #00f5ff;
+  box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+}
+
+.message-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.input-wrapper.focused .input-border {
+  transform: scaleX(1);
+}
+
+/* Submit Button */
+.submit-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 30px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a0a0f;
+  background: linear-gradient(135deg, #00f5ff 0%, #0080ff 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.submit-btn .btn-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-icon {
+  transform: translateX(5px) translateY(-5px);
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.submit-btn:hover .btn-shine {
+  left: 100%;
+}
+
+/* Form Decorations */
+.form-decoration {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+}
+
+.form-decoration.top-left {
+  top: 20px;
+  left: 20px;
+  border-left: 2px solid rgba(0, 245, 255, 0.3);
+  border-top: 2px solid rgba(0, 245, 255, 0.3);
+}
+
+.form-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-right: 2px solid rgba(0, 245, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 245, 255, 0.3);
+}
+
+/* Terminal Footer */
+.contact-terminal {
+  margin-top: 60px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(13, 17, 23, 0.9);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 8px;
+  padding: 12px 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+.terminal-header .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff5f56;
+}
+.dot.yellow {
+  background: #ffbd2e;
+}
+.dot.green {
+  background: #27ca40;
+}
+
+.terminal-body {
+  padding: 15px 20px;
+  font-family: "Rajdhani", monospace;
+  font-size: 0.9rem;
+}
+
+.terminal-prompt {
+  color: #00f5ff;
+  margin-right: 8px;
+}
+
+.terminal-text {
+  color: var(--text-secondary);
+}
+
+.terminal-status {
+  color: #00ff88;
+  font-weight: 600;
+  animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }
 
-@media (max-width: 900px) {
-  .contact-body {
-    flex-direction: column;
-    width: 94%;
+.cursor {
+  color: #00f5ff;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%,
+  50% {
+    opacity: 1;
   }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+  .contact-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
   .contact-info {
-    flex: 1 1 100%;
-  }
-  .sendmail-section {
-    flex: 1 1 100%;
-    margin-top: 12px;
+    order: 2;
   }
 
-  .contact-heading {
-    font-size: 2.2rem;
-  }
-
-  .contact-sub-heading {
-    font-size: 1.5rem;
+  .contact-form-container {
+    order: 1;
   }
 }
 
-@media (max-width: 768px) {
-  .contact-container {
-    padding: 18px 0;
+@media screen and (max-width: 768px) {
+  .contact-section {
+    padding: 80px 15px 50px;
   }
 
-  .contact-heading {
+  .contact-header {
+    margin-bottom: 50px;
+  }
+
+  .contact-title {
     font-size: 2rem;
   }
 
-  .contact-sub-heading {
-    font-size: 1.3rem;
-  }
-
-  .contact-body {
-    padding: 15px;
-    width: 95%;
-  }
-
-  .contact-info {
-    padding: 8px;
-    margin: 8px;
-  }
-
-  .contact-info-heading {
-    font-size: 1.3rem;
-  }
-
-  .contact-info-sub-heading {
+  .contact-subtitle {
     font-size: 1rem;
   }
 
-  .contact-detail-container {
-    padding: 14px 16px;
-    margin-bottom: 15px;
-    gap: 15px;
+  .form-card {
+    padding: 30px 25px;
   }
 
-  .contact-detail-icon {
-    width: 38px;
-    height: 38px;
+  .contact-card {
+    padding: 18px 20px;
   }
 
-  .sendmail-card {
-    padding: 22px;
+  .contact-card .card-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
   }
 
-  .sendmail-heading {
-    font-size: 1.3rem;
-  }
-
-  .sendmail-sub {
-    font-size: 0.95rem;
-  }
-
-  .sendmail-input {
-    padding: 11px 12px;
-  }
-
-  .sendmail-button {
-    padding: 11px 16px;
+  .terminal-body {
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 480px) {
-  .contact-container {
-    padding: 15px 0;
+@media screen and (max-width: 480px) {
+  .contact-section {
+    padding: 60px 10px 40px;
+  }
+
+  .contact-header .header-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+
+  .contact-title {
+    font-size: 1.6rem;
+  }
+
+  .header-decoration .line {
+    width: 50px;
+  }
+
+  .info-title {
+    font-size: 1.3rem;
+  }
+
+  .form-card {
+    padding: 25px 20px;
+    border-radius: 18px;
+  }
+
+  .form-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .message-input {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    padding: 14px 25px;
+    font-size: 0.8rem;
+  }
+
+  .contact-card {
+    padding: 15px 18px;
     gap: 15px;
   }
 
-  .contact-heading {
-    font-size: 1.8rem;
+  .contact-card .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 
-  .contact-sub-heading {
-    font-size: 1.2rem;
-    margin-top: -5px;
-  }
-
-  .contact-body {
-    padding: 10px;
-    width: 98%;
-  }
-
-  .contact-info {
-    padding: 5px;
-    margin: 5px;
-  }
-
-  .contact-info-heading {
-    font-size: 1.2rem;
-  }
-
-  .contact-info-sub-heading {
-    font-size: 0.95rem;
-  }
-
-  .contact-detail-container {
-    padding: 12px 14px;
-    margin-bottom: 12px;
-    gap: 12px;
-    border-radius: 10px;
-  }
-
-  .contact-detail-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .sendmail-card {
-    padding: 18px;
-    border-radius: 10px;
-  }
-
-  .sendmail-heading {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-  }
-
-  .sendmail-sub {
+  .card-value {
     font-size: 0.9rem;
-    margin-bottom: 15px;
   }
 
-  .sendmail-form {
-    gap: 10px;
-  }
-
-  .sendmail-input {
-    padding: 10px 12px;
-    font-size: 0.95rem;
-  }
-
-  .sendmail-button {
-    padding: 10px 14px;
-    font-size: 0.95rem;
-    gap: 6px;
-  }
-
-  .sendmail-button-icon {
-    font-size: 0.9rem;
+  .contact-terminal {
+    margin-top: 40px;
   }
 }

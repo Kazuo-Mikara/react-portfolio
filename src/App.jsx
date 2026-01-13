@@ -131,7 +131,7 @@ const App = () => {
       <ReactLenis root />
       <Home />
       {/* <Projects/> */}
-      <ThemeToggle className="theme-toggle" />
+      {/* <ThemeToggle className="theme-toggle" /> */}
 
     </div>
   )

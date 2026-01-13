@@ -1,14 +1,27 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiHome, FiFolder, FiBriefcase, FiMail } from "react-icons/fi";
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiHome, FiUser, FiCode, FiBriefcase, FiMail, FiLayers, FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from '../components/ThemeToggle';
+import gsap from 'gsap';
 import './Nav.css'
+
+const navItems = [
+  { id: 'about', label: 'About', icon: FiUser },
+  { id: 'skills', label: 'Skills', icon: FiCode },
+  { id: 'experience', label: 'Experience', icon: FiBriefcase },
+  { id: 'projects', label: 'Projects', icon: FiLayers },
+  { id: 'contact', label: 'Contact', icon: FiMail },
+];
+
 export function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showNav, setShowNav] = useState(false); // nav-links hidden until user scrolls; nav-text remains visible
+  const [activeSection, setActiveSection] = useState('about');
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const navRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -31,50 +44,181 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    // show the nav-links when user scrolls down, hide when at top (DESKTOP ONLY)
-    const onScroll = () => {
-      if (!isMobile) {
-        setShowNav(window.scrollY > 10);
+    // Track scroll for navbar styling and active section
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+
+      // Find active section
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const scrollPosition = window.scrollY + 200;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].id);
+          break;
+        }
       }
     };
 
-    // set initial state and attach listener
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // GSAP entrance animation
+    if (!isMobile) {
+      const ctx = gsap.context(() => {
+        gsap.fromTo('.nav-item',
+          { y: -50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power3.out', delay: 0.5 }
+        );
+      }, navRef);
+
+      return () => ctx.revert();
+    }
   }, [isMobile]);
 
-  // On mobile: always show based on isMenuOpen
-  // On desktop: show based on scroll (showNav)
-  const navLinksClass = isMobile
-    ? `nav-links ${isMenuOpen ? 'active' : ''}`
-    : `nav-links ${showNav ? 'show' : 'hidden'}`;
+  const handleNavClick = (sectionId) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div className={`nav-container ${showNav ? 'scrolled' : ''}`}>
+    <>
+      <motion.nav
+        ref={navRef}
+        className={`cyber-nav ${isScrolled ? 'scrolled' : ''}`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        {/* Logo / Brand */}
+        <motion.div
+          className='nav-brand'
+          whileHover={{ scale: 1.05 }}
+        >
+          <span className="brand-text">
+            <span className="brand-accent">&lt;</span>
+            HMK
+            <span className="brand-accent">/&gt;</span>
+          </span>
+          <div className="brand-subtitle">
+            love the life you live<br />
+            live the life you love
+          </div>
+        </motion.div>
 
-      <div className='nav-text'>
-        love the life you live <br />
-        live the life you love
-      </div>
-
-      <div className='menu-button' onClick={toggleMenu}>
-        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
-          <span></span>
-          <span></span>
-          <span></span>
+        {/* Desktop Navigation */}
+        <div className={`nav-links ${isMobile ? 'mobile' : 'desktop'}`}>
+          <ul className='nav-menu'>
+            {navItems.map((item, index) => (
+              <motion.li
+                key={item.id}
+                className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
+                whileHover={{ y: -3 }}
+              >
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.id);
+                  }}
+                >
+                  <span className="nav-indicator"></span>
+                  <span className="nav-text">{item.label}</span>
+                </a>
+              </motion.li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <nav className={navLinksClass}>
-        <ul className='navbar'>
-          <li><a href='#about' onClick={() => setIsMenuOpen(false)}>about</a></li>
-          <li><a href='#skills' onClick={() => setIsMenuOpen(false)}>skills</a></li>
-          <li><a href='#experience' onClick={() => setIsMenuOpen(false)}>experience</a></li>
-          <li><a href='#projects' onClick={() => setIsMenuOpen(false)}>projects</a></li>
-          <li><a href='#contact' onClick={() => setIsMenuOpen(false)}>contact</a></li>
-        </ul>
-      </nav>
-    </div >
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className='menu-toggle'
+          onClick={toggleMenu}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <div className={`hamburger-cyber ${isMenuOpen ? 'active' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </motion.button>
+
+        {/* Decorative Elements */}
+        <div className="nav-decoration left"></div>
+        <div className="nav-decoration right"></div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && isMobile && (
+          <motion.div
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <motion.div
+              className="mobile-menu"
+              initial={{ x: '100%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '100%', opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Mobile menu header */}
+              <div className="mobile-menu-header">
+                <span className="menu-title">Navigation</span>
+                <motion.button
+                  className="close-btn"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FiX />
+                </motion.button>
+              </div>
+
+              {/* Mobile menu items */}
+              <ul className="mobile-nav-list">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    className={`mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <a
+                      href={`#${item.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.id);
+                      }}
+                    >
+                      <item.icon className="nav-icon" />
+                      <span>{item.label}</span>
+                      <div className="item-glow"></div>
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Decorative grid */}
+              <div className="menu-grid-pattern"></div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

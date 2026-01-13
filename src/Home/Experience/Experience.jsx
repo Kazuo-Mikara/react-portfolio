@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Experience.css";
 import { FaRegBuilding } from "react-icons/fa";
 import { TfiLocationPin } from "react-icons/tfi";
 import { MdOutlineCalendarMonth } from "react-icons/md";
-const EXPERIENCE = [
+import { FiBriefcase } from "react-icons/fi";
+import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
+const EXPERIENCE = [
     {
         id: 1,
         jobTitle: "Junior Full-Stack Web Developer",
@@ -12,6 +18,7 @@ const EXPERIENCE = [
         company: "Compass Global",
         location: "Yangon",
         duration: "Sep-2022 - Jan-2024",
+        color: "#00f5ff",
         responsibilities: [
             "Developed and optimized production-ready web applications using React, Next.js, and TypeScript, ensuring robust code quality and minimizing runtime errors through strict type-checking and custom interfaces.",
             "Engineered responsive, mobile-first interfaces using Tailwind CSS, maintaining high-fidelity layouts and consistent branding across complex marketing landing pages and internal admin dashboards.",
@@ -21,11 +28,12 @@ const EXPERIENCE = [
     },
     {
         id: 2,
-        jobTitle: "Quality Assurance Ananlyst",
+        jobTitle: "Quality Assurance Analyst",
         current: false,
         company: "ShopDoora",
         location: "Yangon",
         duration: "Sep 2022 - Oct 2022",
+        color: "#bf00ff",
         responsibilities: [
             "Developed and executed test plans and test cases to ensure quality and accuracy.",
             "Identified, documented, and tracked defects, working with teams to resolve issues",
@@ -40,9 +48,10 @@ const EXPERIENCE = [
         company: "Double-Wave/HOME",
         location: "Yangon",
         duration: "Nov-2023 - August 2025",
+        color: "#ff00aa",
         responsibilities: [
             "Collected and validated data from various sources, ensuring accuracy and completeness.",
-            " Organized and maintained data in databases and spreadsheets",
+            "Organized and maintained data in databases and spreadsheets",
             "Performed data validation and cleaning to ensure data quality",
             "Collaborated with team members to gather requirements and deliver data-driven insights.",
         ],
@@ -50,10 +59,11 @@ const EXPERIENCE = [
     {
         id: 4,
         jobTitle: "Freelance Wordpress Developer",
-        current: false,
+        current: true,
         company: "M.Wolf Marketing Agency",
         location: "Arizona, USA (Remote)",
         duration: "Sep 2025 - Present",
+        color: "#00ff88",
         responsibilities: [
             "Built and customized WordPress sites using Elementor, including custom templates, global widgets, and theme builder integrations.",
             "Integrated and configured essential plugins (SEO, caching, contact forms, analytics and security) and performed compatibility checks.",
@@ -61,43 +71,150 @@ const EXPERIENCE = [
             "Troubleshot theme and plugin conflicts, implemented accessibility improvements, and applied security hardening best practices.",
         ],
     },
-
 ];
-export default function Experience() {
+
+const ExperienceCard = ({ exp, index }) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { once: false, margin: "-50px" });
 
     return (
-        <>
-            <div className="experience-container ">
-                <div className="experience-header">
-                    <h1 className="reveal-type">Professional Experience</h1>
-                    <p className="reveal-type">My journey in data collection, quality assurance, and software development</p>
+        <motion.div
+            ref={cardRef}
+            className={`experience-card ${exp.current ? 'current' : ''}`}
+            style={{ '--accent': exp.color }}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+            transition={{ duration: 0.7, delay: index * 0.1 }}
+        >
+            {/* Timeline dot */}
+            <div className="timeline-dot" style={{ background: exp.color, boxShadow: `0 0 15px ${exp.color}` }}>
+                <span className="dot-ring" style={{ borderColor: exp.color }} />
+            </div>
+
+            {/* Card content */}
+            <div className="card-content">
+                {/* Header */}
+                <div className="card-header">
+                    <div className="header-left">
+                        <h3 className="job-title" style={{ color: exp.color }}>{exp.jobTitle}</h3>
+                        {exp.current && (
+                            <motion.span
+                                className="current-badge"
+                                animate={{ opacity: [1, 0.5, 1] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                            >
+                                <span className="pulse-dot" />
+                                Current
+                            </motion.span>
+                        )}
+                    </div>
                 </div>
 
-                {EXPERIENCE.map((exp) => (
-                    <div className={exp.current ? `experience-timeline current-working reveal-box` : `experience-timeline reveal-box`} key={exp.id}>
+                {/* Meta info */}
+                <div className="card-meta">
+                    <span className="meta-item">
+                        <FaRegBuilding className="meta-icon" style={{ color: exp.color }} />
+                        {exp.company}
+                    </span>
+                    <span className="meta-item">
+                        <TfiLocationPin className="meta-icon" style={{ color: exp.color }} />
+                        {exp.location}
+                    </span>
+                    <span className="meta-item">
+                        <MdOutlineCalendarMonth className="meta-icon" style={{ color: exp.color }} />
+                        {exp.duration}
+                    </span>
+                </div>
 
-                        <div className="timeline-header " key={exp.id}>
-                            <span>{exp.jobTitle}</span>
-                            {exp.current ? <span className="current-occupation">Current</span> : ''}
-                        </div>
-                        <div className="timeline-items " >
-                            <span className="timeline-item"><FaRegBuilding className="timeline-icon" />{exp.company}</span>
-                            <span className="timeline-item"><TfiLocationPin className="timeline-icon" />{exp.location}</span>
-                            <span className="timeline-item"><MdOutlineCalendarMonth className="timeline-icon" />{exp.duration}</span>
-                        </div>
+                {/* Responsibilities */}
+                <ul className="responsibilities">
+                    {exp.responsibilities.map((item, i) => (
+                        <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                            transition={{ delay: i * 0.1 + 0.3 }}
+                        >
+                            <span className="bullet" style={{ background: exp.color }} />
+                            {item}
+                        </motion.li>
+                    ))}
+                </ul>
 
-                        <div className="timeline-content ">
-                            {exp.responsibilities.map((item, index) => (
-
-                                <ul key={index}>
-                                    <li className="">{item}</li>
-
-                                </ul>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+                {/* Tech pattern decoration */}
+                <div className="card-pattern" />
             </div>
-        </>
-    )
+
+            {/* Glow effect */}
+            <div className="card-glow" style={{ background: `radial-gradient(ellipse at top left, ${exp.color}15, transparent 60%)` }} />
+        </motion.div>
+    );
+};
+
+export default function Experience() {
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Animate timeline line
+            gsap.fromTo('.timeline-line',
+                { scaleY: 0 },
+                {
+                    scaleY: 1,
+                    duration: 2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.experience-timeline',
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        scrub: 1
+                    }
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section className="experience-section" ref={sectionRef}>
+            {/* Background */}
+            <div className="experience-bg">
+                <div className="grid-pattern" />
+            </div>
+
+            <div className="experience-container">
+                {/* Header */}
+                <motion.div
+                    className="experience-header"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="header-icon">
+                        <FiBriefcase />
+                    </div>
+                    <h1>Professional Experience</h1>
+                    <p>My journey in data collection, quality assurance, and software development</p>
+                    <div className="header-line">
+                        <span className="line" />
+                        <span className="diamond" />
+                        <span className="line" />
+                    </div>
+                </motion.div>
+
+                {/* Timeline */}
+                <div className="experience-timeline">
+                    {/* Central timeline line */}
+                    <div className="timeline-line" />
+
+                    {/* Experience cards */}
+                    {EXPERIENCE.map((exp, index) => (
+                        <ExperienceCard key={exp.id} exp={exp} index={index} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }

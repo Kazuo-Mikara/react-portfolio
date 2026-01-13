@@ -1,122 +1,327 @@
-.experience-container {
-  margin: 20px;
-  font-family: "Nunito";
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* ============================================
+   Futuristic Cyber Experience Section
+   ============================================ */
+
+.experience-section {
+  position: relative;
+  padding: 100px 20px;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
+/* Background */
+.experience-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 245, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Container */
+.experience-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
 .experience-header {
   text-align: center;
-  font-weight: 800;
-  margin: 0;
+  margin-bottom: 80px;
+}
+
+.experience-header .header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 16px;
+  font-size: 1.8rem;
+  color: #00f5ff;
+  margin-bottom: 20px;
 }
 
 .experience-header h1 {
+  font-family: "Orbitron", sans-serif;
   font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
 }
 
 .experience-header p {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #6b7280;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 0 0 25px 0;
 }
 
-.experience-timeline {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-  padding: 20px 40px;
-  border-radius: 30px;
-  gap: 20px;
-  background: var(--card-bg);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  width: 80%;
-}
-
-.current-occupation {
-  background-color: #438f8f;
-  color: white;
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-left: 10px;
-}
-.current-working {
-  border-top: 4px solid #438f8f;
-}
-.timeline-header {
+.header-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  font-weight: 600;
+  gap: 15px;
 }
 
-.timeline-items {
+.header-line .line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+}
+
+.header-line .diamond {
+  width: 10px;
+  height: 10px;
+  background: #00f5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px #00f5ff;
+}
+
+/* Timeline */
+.experience-timeline {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.timeline-item {
+/* Timeline Line */
+.timeline-line {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #00f5ff, #bf00ff, #ff00aa, #00ff88);
+  transform-origin: top;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+/* Experience Card */
+.experience-card {
+  position: relative;
+  margin-left: 70px;
+  padding: 30px;
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.experience-card:hover {
+  border-color: var(--accent);
+  transform: translateX(10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent, #00f5ff) 20;
+}
+
+.experience-card.current {
+  border-left: 3px solid var(--accent);
+}
+
+/* Card Glow */
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Timeline Dot */
+.timeline-dot {
+  position: absolute;
+  left: -50px;
+  top: 35px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.dot-ring {
+  position: absolute;
+  inset: -5px;
+  border: 2px solid;
+  border-radius: 50%;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.3;
+  }
+}
+
+/* Card Content */
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Card Header */
+.card-header {
   display: flex;
-  font-size: 1rem;
-  font-weight: 800;
-  flex-direction: row;
-  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.timeline-icon {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.job-title {
+  font-family: "Orbitron", sans-serif;
   font-size: 1.4rem;
-  color: #438f8f;
-}
-
-.timeline-content > ul {
-  /* use normal block list so disc markers render */
-  display: block;
-  padding-left: 1.24rem;
-  /* native marker space */
+  font-weight: 700;
   margin: 0;
+  letter-spacing: 0.03em;
 }
 
-.timeline-content > ul > li {
-  list-style-type: disc;
-  font-size: 1rem;
+.current-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.15);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  border-radius: 20px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+/* Card Meta */
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  margin: 8px 0;
 }
 
-.timeline-content > ul > li::marker {
-  color: var(--accent-color);
-  font-size: 1.4rem;
+.meta-icon {
+  font-size: 1.1rem;
 }
 
-/* Mobile Responsive Styles */
-@media screen and (max-width: 1024px) {
-  .experience-header h1 {
-    font-size: 2.5rem;
-  }
-
-  .experience-header p {
-    font-size: 1.6rem;
-  }
-
-  .timeline-header {
-    font-size: 1.8rem;
-  }
+/* Responsibilities */
+.responsibilities {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
+.responsibilities li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.responsibilities .bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 50%;
+}
+
+/* Card Pattern */
+.card-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 245, 255, 0.03) 30%,
+    rgba(0, 245, 255, 0.03) 60%,
+    transparent 60%
+  );
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Responsive */
 @media screen and (max-width: 768px) {
-  .experience-container {
-    margin: 15px;
-    padding: 15px;
+  .experience-section {
+    padding: 80px 15px;
+  }
+
+  .experience-header {
+    margin-bottom: 60px;
   }
 
   .experience-header h1 {
@@ -124,100 +329,106 @@
   }
 
   .experience-header p {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
-  .experience-timeline {
-    width: 90%;
-    padding: 15px 25px;
-    gap: 15px;
+  .timeline-line {
+    left: 15px;
   }
 
-  .timeline-header {
-    font-size: 1.6rem;
-    flex-wrap: wrap;
+  .experience-card {
+    margin-left: 45px;
+    padding: 25px 20px;
   }
 
-  .current-occupation {
-    font-size: 0.9rem;
-    padding: 3px 8px;
-    margin-left: 5px;
+  .timeline-dot {
+    left: -37px;
+    width: 16px;
+    height: 16px;
   }
 
-  .timeline-items {
-    gap: 15px;
+  .dot-ring {
+    inset: -4px;
   }
 
-  .timeline-item {
-    font-size: 0.95rem;
-  }
-
-  .timeline-icon {
+  .job-title {
     font-size: 1.2rem;
   }
 
-  .timeline-content > ul > li {
+  .card-meta {
+    gap: 12px;
+  }
+
+  .meta-item {
+    font-size: 0.85rem;
+  }
+
+  .responsibilities li {
     font-size: 0.95rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .experience-container {
-    margin: 10px;
-    padding: 10px;
+  .experience-section {
+    padding: 60px 10px;
+  }
+
+  .experience-header .header-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
   }
 
   .experience-header h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
-  .experience-header p {
-    font-size: 1.2rem;
+  .header-line .line {
+    width: 50px;
   }
 
-  .experience-timeline {
-    width: 95%;
-    padding: 15px 18px;
-    border-radius: 20px;
-    gap: 12px;
+  .timeline-line {
+    left: 10px;
   }
 
-  .timeline-header {
-    font-size: 1.3rem;
-    flex-direction: column;
-    align-items: flex-start;
+  .experience-card {
+    margin-left: 35px;
+    padding: 20px 15px;
+    border-radius: 15px;
   }
 
-  .current-occupation {
-    font-size: 0.85rem;
-    padding: 2px 7px;
-    margin-left: 0;
-    margin-top: 5px;
+  .timeline-dot {
+    left: -30px;
+    width: 14px;
+    height: 14px;
   }
 
-  .timeline-items {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .timeline-item {
-    font-size: 0.9rem;
-  }
-
-  .timeline-icon {
+  .job-title {
     font-size: 1.1rem;
   }
 
-  .timeline-content > ul {
-    padding-left: 1rem;
+  .current-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
   }
 
-  .timeline-content > ul > li {
+  .card-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .meta-item {
+    font-size: 0.8rem;
+  }
+
+  .responsibilities li {
     font-size: 0.9rem;
-    margin: 6px 0;
+    gap: 10px;
   }
 
-  .timeline-content > ul > li::marker {
-    font-size: 1.2rem;
+  .responsibilities .bullet {
+    width: 5px;
+    height: 5px;
+    margin-top: 7px;
   }
 }

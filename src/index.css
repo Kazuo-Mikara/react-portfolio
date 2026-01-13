@@ -1,63 +1,95 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montaga&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* ============================================
-   CSS Variables for Light/Dark Theme
+   Futuristic Cyberspace Theme Variables
    ============================================ */
 :root {
-  /* Light Mode Colors (default) */
-  --bg-primary: oklch(0.9551 0 0);
-  /* --bg-primary: oklch(0.98 0 0); */
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f0f2f5;
-  --text-primary: #1a1a2e;
-  --text-secondary: #333333;
-  --text-tertiary: #666666;
-  --chip-text: #f5f5f5;
-  --chip-color: #438f8f;
-  --accent-color: #438f8f;
-  --accent-hover: #367070;
-  --accent-light: rgba(67, 143, 143, 0.12);
-  --accent-lighter: rgba(67, 143, 143, 0.08);
-  --progress-track: #e4dfdf;
-  --progress-fill: #438f8f;
-  --border-color: rgba(67, 143, 143, 0.15);
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --shadow-heavy: rgba(0, 0, 0, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --button-color: #438f8f;
-  --nav-icons: oklch(0.97 0.01 80.72);
-  --button-text: #ffffff;
-  --scrollbar-track: oklch(0.98 0 0);
-  --scrollbar-thumb: #438f8f;
-  --scrollbar-thumb-hover: #555;
+  /* Cyberspace Color Palette */
+  --cyber-bg-primary: #0a0a0f;
+  --cyber-bg-secondary: #0d1117;
+  --cyber-bg-tertiary: #161b22;
+  --cyber-bg-card: rgba(13, 17, 23, 0.85);
+
+  /* Neon Colors */
+  --neon-cyan: #00f5ff;
+  --neon-purple: #bf00ff;
+  --neon-pink: #ff00aa;
+  --neon-blue: #0080ff;
+  --neon-green: #00ff88;
+  --neon-orange: #ff6b00;
+
+  /* Gradient Colors */
+  --gradient-primary: linear-gradient(
+    135deg,
+    #00f5ff 0%,
+    #bf00ff 50%,
+    #ff00aa 100%
+  );
+  --gradient-secondary: linear-gradient(135deg, #0080ff 0%, #00f5ff 100%);
+  --gradient-glow: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.3) 0%,
+    rgba(191, 0, 255, 0.3) 100%
+  );
+
+  /* Text Colors */
+  --text-primary: #e4e5f1;
+  --text-secondary: #a0a0b8;
+  --text-tertiary: #6b6b7d;
+  --text-glow: #00f5ff;
+
+  /* Accent Colors */
+  --accent-color: #00f5ff;
+  --accent-hover: #00d4dd;
+  --accent-light: rgba(0, 245, 255, 0.15);
+  --accent-lighter: rgba(0, 245, 255, 0.08);
+
+  /* UI Elements */
+  --border-color: rgba(0, 245, 255, 0.2);
+  --border-glow: rgba(0, 245, 255, 0.5);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(0, 245, 255, 0.3);
+
+  /* Card Styles */
+  --card-bg: rgba(13, 17, 23, 0.8);
+  --card-border: rgba(0, 245, 255, 0.1);
+  --card-glow: rgba(0, 245, 255, 0.05);
+
+  /* Button Colors */
+  --button-bg: linear-gradient(135deg, #00f5ff 0%, #0080ff 100%);
+  --button-text: #0a0a0f;
+
+  /* Scrollbar */
+  --scrollbar-track: #0a0a0f;
+  --scrollbar-thumb: #00f5ff;
+  --scrollbar-thumb-hover: #bf00ff;
+
+  /* Light mode overrides */
+  --bg-primary: var(--cyber-bg-primary);
+  --bg-secondary: var(--cyber-bg-secondary);
+  --bg-tertiary: var(--cyber-bg-tertiary);
+  --chip-color: var(--cyber-bg-tertiary);
+  --chip-text: var(--neon-cyan);
+  --button-color: var(--neon-cyan);
+  --button-text: var(--cyber-bg-primary);
+  --progress-track: var(--cyber-bg-tertiary);
+  --progress-fill: var(--neon-cyan);
+  --nav-icons: var(--cyber-bg-tertiary);
 }
 
-/* Dark Mode Colors */
+/* Dark Mode (Same as default for cyber theme) */
 html.dark {
-  --bg-primary: #0f0f1a;
-  --bg-secondary: #1a1a2e;
-  --bg-tertiary: #16213e;
+  --bg-primary: var(--cyber-bg-primary);
+  --bg-secondary: var(--cyber-bg-secondary);
+  --bg-tertiary: var(--cyber-bg-tertiary);
   --text-primary: #e4e5f1;
-  --text-secondary: #94a3b8;
-  --text-tertiary: #b0b0b0;
-  --chip-text: #eeeeee;
-  --chip-color: #1a1a2e;
-  --accent-color: #5bbfbf;
-  --accent-hover: #7dd4d4;
-  --accent-light: rgba(91, 191, 191, 0.2);
-  --accent-lighter: rgba(91, 191, 191, 0.1);
-  --progress-track: #c7c7c7;
-  --progress-fill: #0f0f1a;
-  --border-color: rgba(91, 191, 191, 0.2);
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --shadow-heavy: rgba(0, 0, 0, 0.5);
-  --card-bg: #232946;
-  --button-color: #232946;
-  --button-text: #fafafa;
-  --nav-icons: oklch(0.98 0 0);
-  --scrollbar-track: #1a1a2e;
-  --scrollbar-thumb: #f5f5f5;
-  --scrollbar-thumb-hover: #7dd4d4;
+  --text-secondary: #a0a0b8;
+  --text-tertiary: #6b6b7d;
+  --accent-color: #00f5ff;
+  --accent-hover: #00d4dd;
+  --card-bg: rgba(13, 17, 23, 0.85);
+  --chip-color: var(--cyber-bg-tertiary);
+  --chip-text: var(--neon-cyan);
 }
 
 /* Global Styles */
@@ -65,8 +97,6 @@ html.dark {
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: background-color 0.8s ease, border-color 0.8s ease,
-    box-shadow 0.8s ease;
 }
 
 html {
@@ -78,46 +108,370 @@ body {
   margin: 0;
   overflow-x: hidden;
   width: 100%;
-  background-color: var(--bg-primary);
+  background-color: var(--cyber-bg-primary);
   color: var(--text-primary);
+  font-family: "Rajdhani", "Inter", sans-serif;
   transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
 }
 
+/* Animated Grid Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 245, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(60px);
+  }
+}
+
+/* Floating particles */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      2px 2px at 20% 30%,
+      rgba(0, 245, 255, 0.4),
+      transparent
+    ),
+    radial-gradient(2px 2px at 40% 70%, rgba(191, 0, 255, 0.4), transparent),
+    radial-gradient(2px 2px at 80% 40%, rgba(0, 245, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 60% 80%, rgba(255, 0, 170, 0.3), transparent),
+    radial-gradient(2px 2px at 10% 90%, rgba(0, 128, 255, 0.4), transparent),
+    radial-gradient(2px 2px at 90% 20%, rgba(0, 245, 255, 0.3), transparent);
+  pointer-events: none;
+  z-index: 0;
+  animation: particleFloat 15s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+/* Container for content above background */
+.home {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glitch Text Effect */
+.glitch {
+  position: relative;
+  animation: glitch 2s linear infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00aa;
+  clip-path: inset(44% 0 0 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 #00f5ff;
+  clip-path: inset(0 0 44% 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip-path: inset(65% 0 28% 0);
+  }
+  20% {
+    clip-path: inset(79% 0 6% 0);
+  }
+  40% {
+    clip-path: inset(48% 0 38% 0);
+  }
+  60% {
+    clip-path: inset(14% 0 61% 0);
+  }
+  80% {
+    clip-path: inset(37% 0 53% 0);
+  }
+  100% {
+    clip-path: inset(7% 0 84% 0);
+  }
+}
+
+/* Neon Glow Text */
+.neon-text {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+}
+
+.neon-text-purple {
+  color: var(--neon-purple);
+  text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple),
+    0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);
+}
+
+/* Cyber Border */
+.cyber-border {
+  position: relative;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+}
+
+.cyber-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Scan Line Effect */
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent 50%, rgba(0, 245, 255, 0.02) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+p,
+span,
+a,
+li {
+  font-family: "Rajdhani", "Inter", sans-serif;
+}
+
+/* Description text */
 .description-text {
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .experience-header {
   color: var(--text-primary);
 }
 
-/* Custom scrollbar styles */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-  transition: background 0.4s ease;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 10px;
-  transition: background 0.4s ease;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
+/* Hover effects */
+a {
+  transition: all 0.3s ease;
 }
 
-/* Ensure text doesn't transition awkwardly */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-li {
-  transition: color 0.8s ease-in-out;
+a:hover {
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Section styles */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation utilities */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.6s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 245, 255, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Matrix rain effect overlay (optional decorative) */
+.matrix-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 5px,
+    rgba(0, 245, 255, 0.1) 5px,
+    rgba(0, 245, 255, 0.1) 6px
+  );
+  animation: matrixScroll 10s linear infinite;
+}
+
+@keyframes matrixScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
 }

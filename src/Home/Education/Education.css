@@ -1,289 +1,427 @@
-.education-container {
-  width: 100%;
-  font-family: "Nunito";
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
+/* ============================================
+   Futuristic Cyber Education Section
+   ============================================ */
+
+.education-section {
+  position: relative;
+  padding: 100px 20px;
+  overflow: hidden;
 }
 
-.education-header > h1 {
+/* Background */
+.education-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hex-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%2300f5ff' fill-opacity='0.02' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9z'/%3E%3C/svg%3E");
+}
+
+/* Container */
+.education-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.education-header {
   text-align: center;
+  margin-bottom: 60px;
+}
+
+.education-header .header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 16px;
+  font-size: 1.8rem;
+  color: #00f5ff;
+  margin-bottom: 20px;
+}
+
+.education-header h1 {
+  font-family: "Orbitron", sans-serif;
   font-size: 3rem;
   font-weight: 800;
-  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
 }
 
-.education-header > p {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 400;
+.education-header p {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-top: -10px;
-}
-.education-timeline-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 30px;
-  gap: 24px;
-  width: 90%;
-  max-width: 1200px;
+  margin: 0 0 25px 0;
 }
 
-.education-timeline {
-  flex: 1;
-  max-width: 550px;
-  background: var(--bg-tertiary);
+.header-decoration {
   display: flex;
-  padding: 24px 24px;
-  flex-direction: column;
-  gap: 24px;
-  border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(67, 143, 143, 0.1);
-  transition: all 0.3s ease;
-}
-
-.education-timeline:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-}
-
-.education-timeline-header {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid rgba(67, 143, 143, 0.1);
+  justify-content: center;
+  gap: 15px;
 }
 
-.header-icon {
-  width: 85px;
-  height: 85px;
-  padding: 16px;
-  margin: 0;
-  background: var(--bg-secondary);
-  border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(67, 143, 143, 0.08);
+.header-decoration .line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+}
+
+.header-decoration .diamond {
+  width: 10px;
+  height: 10px;
+  background: #00f5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px #00f5ff;
+}
+
+/* Education Grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* Education Card */
+.education-card {
+  position: relative;
+  padding: 35px 30px;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  perspective: 1000px;
+}
+
+.education-card:hover {
+  border-color: var(--accent);
+}
+
+/* Card Top Border */
+.card-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+/* Card Glow */
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+.logo-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
 }
 
-.header-icon img {
+.logo-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
 }
 
-.header-text {
+.logo-ring {
+  position: absolute;
+  inset: -5px;
+  border: 2px solid;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.education-card:hover .logo-ring {
+  opacity: 0.5;
+}
+
+.degree-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  flex: 1;
+  gap: 5px;
 }
 
-.header-text > span {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
+.degree {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.03em;
 }
 
-.header-text > span:nth-child(2) {
+.field {
+  font-family: "Rajdhani", sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #438f8f;
+  color: var(--text-primary);
 }
 
-.education-timeline-items {
+.status-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
+/* Card Details */
+.card-details {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 12px;
-  margin-top: 4px;
+  margin-bottom: 25px;
 }
 
-.education-timeline-items > span {
+.detail-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.98rem;
+  gap: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  line-height: 1.5;
 }
 
-.education-timeline-icon {
-  font-size: 1.2rem;
-  color: var(--accent-color);
+.detail-icon {
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
-.timeline-chips {
+/* Achievements */
+.achievements {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.timeline-chip {
-  background: var(--chip-color);
-  color: var(--chip-text);
+.achievements-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.achievement-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.achievement-chip {
+  display: inline-flex;
+  padding: 8px 16px;
+  font-family: "Rajdhani", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(67, 143, 143, 0.25);
-  transition: all 0.2s ease;
+  color: var(--text-primary);
+  border: 1px solid;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  cursor: default;
 }
 
-.timeline-chip:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(67, 143, 143, 0.35);
+/* Corner Decorations */
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Mobile Responsive Styles */
-@media screen and (max-width: 1024px) {
-  .education-header > h1 {
-    font-size: 2.5rem;
-  }
+.education-card:hover .corner {
+  opacity: 0.4;
+}
 
-  .education-header > p {
-    font-size: 1.6rem;
-  }
+.corner.tl {
+  top: 15px;
+  left: 15px;
+  border-right: none;
+  border-bottom: none;
+}
 
-  .education-timeline-container {
-    width: 85%;
-  }
+.corner.tr {
+  top: 15px;
+  right: 15px;
+  border-left: none;
+  border-bottom: none;
+}
 
-  .header-text > span {
-    font-size: 1.4rem;
+.corner.bl {
+  bottom: 15px;
+  left: 15px;
+  border-right: none;
+  border-top: none;
+}
+
+.corner.br {
+  bottom: 15px;
+  right: 15px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Scanline Overlay */
+.scanline-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 245, 255, 0.01) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.education-card:hover .scanline-overlay {
+  opacity: 1;
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .education-container {
-    padding: 15px 0;
+  .education-section {
+    padding: 80px 15px;
   }
 
-  .education-header > h1 {
+  .education-header h1 {
     font-size: 2rem;
   }
 
-  .education-header > p {
-    font-size: 1.4rem;
+  .education-header p {
+    font-size: 1rem;
   }
 
-  .education-timeline-container {
-    width: 90%;
-    flex-direction: column;
-    padding: 15px 20px;
-    border-radius: 25px;
+  .education-card {
+    padding: 30px 25px;
   }
 
-  .education-timeline {
-    padding: 18px 18px;
-    gap: 25px;
-    border-radius: 25px;
-  }
-
-  .education-timeline-header {
+  .card-header {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .header-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 0 15px 0;
-  }
-
-  .header-text > span {
-    font-size: 1.3rem;
-  }
-
-  .education-timeline-items {
-    margin-left: 0;
+  .degree-info {
     align-items: center;
   }
 
-  .timeline-chips {
-    flex-wrap: wrap;
-    justify-content: center;
+  .logo-container {
+    width: 70px;
+    height: 70px;
   }
 
-  .timeline-chip {
-    font-size: 0.85rem;
+  .degree {
+    font-size: 1.2rem;
+  }
+
+  .card-details {
+    align-items: center;
+  }
+
+  .achievement-chips {
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .education-container {
-    gap: 15px;
-    padding: 15px 0;
+  .education-section {
+    padding: 60px 10px;
   }
 
-  .education-header > h1 {
-    font-size: 1.8rem;
+  .education-header .header-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
   }
 
-  .education-header > p {
-    font-size: 1.2rem;
-    margin-top: -5px;
+  .education-header h1 {
+    font-size: 1.6rem;
   }
 
-  .education-timeline-container {
-    width: 95%;
-    padding: 12px 15px;
-    border-radius: 20px;
-    gap: 15px;
+  .header-decoration .line {
+    width: 50px;
   }
 
-  .education-timeline {
-    padding: 15px 15px;
-    gap: 20px;
-    border-radius: 20px;
+  .education-card {
+    padding: 25px 20px;
+    border-radius: 18px;
   }
 
-  .header-icon {
-    width: 70px;
-    height: 70px;
-    padding: 15px;
-    margin: 0 0 12px 0;
-    border-radius: 30px;
+  .logo-container {
+    width: 60px;
+    height: 60px;
   }
 
-  .header-icon img {
-    border-radius: 30px;
-  }
-
-  .header-text > span {
+  .degree {
     font-size: 1.1rem;
   }
 
-  .education-timeline-items {
-    gap: 8px;
-  }
-
-  .education-timeline-icon {
+  .field {
     font-size: 1rem;
-    margin-right: 8px;
   }
 
-  .timeline-chip {
+  .detail-item {
+    font-size: 0.85rem;
+  }
+
+  .achievement-chip {
+    padding: 6px 12px;
     font-size: 0.8rem;
-    padding: 3px 8px;
+  }
+
+  .corner {
+    width: 15px;
+    height: 15px;
   }
 }
