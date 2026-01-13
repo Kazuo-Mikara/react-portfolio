@@ -77,7 +77,7 @@ export default function Hero() {
                     playsInline
                     className="hero-video"
                 >
-                    <source src="/assets/animated_hero.mp4" type="video/mp4" />
+                    <source src="/assets/upscaled-video1.mp4" type="video/mp4" />
                 </video>
 
                 {/* Subtle overlay for text readability */}
