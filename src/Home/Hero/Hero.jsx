@@ -106,7 +106,11 @@ export default function Hero() {
                         experiences. Available for opportunities.
                     </p>
                 </div>
-
+                <motion.div>
+                    <span className="hero-availability">For opportunities and challenges. </span>
+                    <div className="hero-availability-dot"></div>
+                    <span className="hero-availability-text">Available</span>
+                </motion.div>
                 {/* Right Side Text */}
                 <div className="hero-right">
                     <div className="text-block">

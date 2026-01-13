@@ -80,6 +80,37 @@
 }
 
 /* Hero Content */
+.hero-availability {
+  position: absolute;
+  bottom: 140px;
+  right: 640px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(245, 245, 240, 0.7);
+}
+
+.hero-availability-dot {
+  position: absolute;
+  bottom: 144px;
+  right: 620px;
+  width: 10px;
+  height: 10px;
+  background: #07b673;
+  border-radius: 50%;
+}
+
+.hero-availability-text {
+  position: absolute;
+  bottom: 140px;
+  right: 505px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #07b673;
+}
+
 .hero-content {
   position: relative;
   z-index: 10;
