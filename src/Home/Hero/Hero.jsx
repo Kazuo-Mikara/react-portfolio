@@ -47,10 +47,15 @@ export default function Hero() {
                     { y: 0, opacity: 1, duration: 1 },
                     "-=0.7"
                 )
+                .fromTo('.hero-availability-container',
+                    { x: 100, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 1, delay: 0.3 },
+                    "-=1"
+                )
                 // Bottom bar animation
                 .fromTo('.hero-bottom',
-                    { y: 30, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.6 },
+                    { x: 30, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.6 },
                     "-=0.3"
                 );
         }, heroRef);
@@ -107,9 +112,11 @@ export default function Hero() {
                     </p>
                 </div>
                 <motion.div>
-                    <span className="hero-availability">For opportunities and challenges. </span>
-                    <div className="hero-availability-dot"></div>
-                    <span className="hero-availability-text">Available</span>
+                    <div className="hero-availability-container">
+                        <span className="hero-availability">For opportunities and challenges. </span>
+                        <div className="hero-availability-dot"></div>
+                        <span className="hero-availability-text">Available</span>
+                    </div>
                 </motion.div>
                 {/* Right Side Text */}
                 <div className="hero-right">

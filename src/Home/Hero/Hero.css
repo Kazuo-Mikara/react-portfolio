@@ -80,10 +80,16 @@
 }
 
 /* Hero Content */
-.hero-availability {
+
+.hero-availability-container {
   position: absolute;
   bottom: 140px;
-  right: 640px;
+  right: 520px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-availability {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -91,9 +97,6 @@
 }
 
 .hero-availability-dot {
-  position: absolute;
-  bottom: 144px;
-  right: 620px;
   width: 10px;
   height: 10px;
   background: #07b673;
@@ -101,9 +104,6 @@
 }
 
 .hero-availability-text {
-  position: absolute;
-  bottom: 140px;
-  right: 505px;
   font-family: "Orbitron", sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
