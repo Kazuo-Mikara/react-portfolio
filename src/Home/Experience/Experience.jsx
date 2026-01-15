@@ -172,6 +172,38 @@ export default function Experience() {
                     }
                 }
             );
+            gsap.fromTo('.experience-title span',
+                { x: 60, opacity: 0, rotateY: -20 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    rotateY: 0,
+                    duration: 1,
+                    stagger: 0.04,
+                    ease: 'power3.out(2)',
+                    scrollTrigger: {
+                        trigger: '.experience-header',
+                        start: 'top 65%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+            gsap.fromTo('.experience-subtitle',
+                { y: 60, opacity: 0, rotateX: -90 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    rotateX: 0,
+                    duration: 0.6,
+                    stagger: 0.04,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: {
+                        trigger: '.experience-header',
+                        start: 'top 65%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
         }, sectionRef);
 
         return () => ctx.revert();
@@ -195,8 +227,10 @@ export default function Experience() {
                     <div className="header-icon">
                         <FiBriefcase />
                     </div>
-                    <h1>Professional Experience</h1>
-                    <p>My journey in data collection, quality assurance, and software development</p>
+                    <h1 className="experience-title">{'PROFESSIONAL EXPERIENCE'.split('').map((char, i) => (
+                        <span key={i}>{char === ' ' ? '\u00A0' : char}</span>
+                    ))}</h1>
+                    <p className="experience-subtitle">My journey in data collection, quality assurance, and software development</p>
                     <div className="header-line">
                         <span className="line" />
                         <span className="diamond" />

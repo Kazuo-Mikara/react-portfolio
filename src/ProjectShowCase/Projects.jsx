@@ -24,6 +24,10 @@ const PROJECTS_DATA = [
             "/assets/Pharmacy/Pharmacy3.png",
             "/assets/Pharmacy/Pharmacy4.png",
             "/assets/Pharmacy/Pharmacy5.png",
+            "/assets/Pharmacy/Pharmacy6.png",
+            "/assets/Pharmacy/Pharmacy7.png",
+            "/assets/Pharmacy/Pharmacy8.png",
+            "/assets/Pharmacy/Pharmacy9.png",
         ],
     },
     {
@@ -40,6 +44,8 @@ const PROJECTS_DATA = [
             "/assets/Kazuo_Travels/Kazuo_Travels2.png",
             "/assets/Kazuo_Travels/Kazuo_Travels3.png",
             "/assets/Kazuo_Travels/Kazuo_Travels4.png",
+            "/assets/Kazuo_Travels/Kazuo_Travels5.png",
+
         ],
     },
     {
@@ -56,6 +62,10 @@ const PROJECTS_DATA = [
             "/assets/Zenix/Zenix2.png",
             "/assets/Zenix/Zenix3.png",
             "/assets/Zenix/Zenix4.png",
+            "/assets/Zenix/Zenix5.png",
+            "/assets/Zenix/Zenix6.png",
+            "/assets/Zenix/Zenix7.png",
+            "/assets/Zenix/Zenix8.png",
         ],
     },
     {
@@ -71,6 +81,10 @@ const PROJECTS_DATA = [
             "/assets/Crestview/Crestview1.png",
             "/assets/Crestview/Crestview2.png",
             "/assets/Crestview/Crestview3.png",
+            "/assets/Crestview/Crestview4.png",
+            "/assets/Crestview/Crestview5.png",
+            "/assets/Crestview/Crestview6.png",
+            "/assets/Crestview/Crestview7.png",
         ],
     },
     {
@@ -120,7 +134,7 @@ const ImageSlideshow = ({ images, color, title }) => {
     };
 
     return (
-        <div 
+        <div
             className="slideshow-container"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
@@ -133,14 +147,14 @@ const ImageSlideshow = ({ images, color, title }) => {
                         initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        transition={{ duration: 0.5, ease: "slingshot" }}
                     >
-                        <img 
-                            src={images[currentIndex]} 
+                        <img
+                            src={images[currentIndex]}
                             alt={`${title} screenshot ${currentIndex + 1}`}
                             loading="lazy"
                         />
-                        <div 
+                        <div
                             className="slide-overlay"
                             style={{ background: `linear-gradient(to top, ${color}20 0%, transparent 50%)` }}
                         />
@@ -150,7 +164,7 @@ const ImageSlideshow = ({ images, color, title }) => {
                 {/* Progress bar */}
                 {images.length > 1 && (
                     <div className="slideshow-progress">
-                        <motion.div 
+                        <motion.div
                             className="progress-bar"
                             style={{ background: color }}
                             initial={{ scaleX: 0 }}
@@ -165,7 +179,7 @@ const ImageSlideshow = ({ images, color, title }) => {
             {/* Navigation arrows */}
             {images.length > 1 && (
                 <>
-                    <button 
+                    <button
                         className="slide-nav prev"
                         onClick={goToPrev}
                         aria-label="Previous image"
@@ -173,7 +187,7 @@ const ImageSlideshow = ({ images, color, title }) => {
                     >
                         <FiChevronLeft />
                     </button>
-                    <button 
+                    <button
                         className="slide-nav next"
                         onClick={goToNext}
                         aria-label="Next image"
@@ -193,7 +207,7 @@ const ImageSlideshow = ({ images, color, title }) => {
                             className={`dot ${index === currentIndex ? 'active' : ''}`}
                             onClick={() => goToSlide(index)}
                             aria-label={`Go to slide ${index + 1}`}
-                            style={{ 
+                            style={{
                                 '--dot-color': color,
                                 '--dot-glow': `0 0 10px ${color}`
                             }}
@@ -228,8 +242,8 @@ const ProjectCard = ({ project, index }) => {
 
             {/* Image Slideshow */}
             <div className="project-media">
-                <ImageSlideshow 
-                    images={project.images} 
+                <ImageSlideshow
+                    images={project.images}
                     color={project.color}
                     title={project.title}
                 />
@@ -238,16 +252,16 @@ const ProjectCard = ({ project, index }) => {
             {/* Content Section */}
             <div className="project-content">
                 <div className="content-header">
-                    <motion.h3 
+                    <motion.h3
                         className="project-title"
                         animate={{ color: isHovered ? project.color : '#ffffff' }}
                         transition={{ duration: 0.3 }}
                     >
                         {project.title}
                     </motion.h3>
-                    <div 
-                        className="title-underline" 
-                        style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }} 
+                    <div
+                        className="title-underline"
+                        style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }}
                     />
                 </div>
 
@@ -256,14 +270,14 @@ const ProjectCard = ({ project, index }) => {
                     <FiCode className="tech-icon" style={{ color: project.color }} />
                     <div className="tech-tags">
                         {project.techstack.map((tech, i) => (
-                            <motion.span 
-                                key={i} 
+                            <motion.span
+                                key={i}
                                 className="tech-tag"
-                                style={{ 
+                                style={{
                                     borderColor: `${project.color}50`,
                                     color: project.color
                                 }}
-                                whileHover={{ 
+                                whileHover={{
                                     background: `${project.color}20`,
                                     scale: 1.05
                                 }}
@@ -307,7 +321,7 @@ const ProjectCard = ({ project, index }) => {
             </div>
 
             {/* Hover glow effect */}
-            <motion.div 
+            <motion.div
                 className="card-glow"
                 style={{ background: `radial-gradient(ellipse at center, ${project.color}12, transparent 70%)` }}
                 animate={{ opacity: isHovered ? 1 : 0 }}
@@ -359,7 +373,7 @@ export default function ProjectShowcase() {
             <div className="projects-container">
                 {/* Section Header */}
                 <header className="projects-header">
-                    <motion.div 
+                    <motion.div
                         className="header-content"
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -396,7 +410,7 @@ export default function ProjectShowcase() {
                 </div>
 
                 {/* View More Button */}
-                <motion.div 
+                <motion.div
                     className="view-more-container"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

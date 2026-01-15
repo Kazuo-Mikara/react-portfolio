@@ -38,9 +38,6 @@ export default function Home() {
       <section id="about">
         <Hero />
       </section>
-      <section id="skills">
-        <Skills />
-      </section>
       <section id="experience">
         <Experience />
         <Education />

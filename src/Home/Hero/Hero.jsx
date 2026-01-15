@@ -116,9 +116,8 @@ export default function Hero() {
                         </h1>
                     </div>
                     <p className="hero-description">
-                        I specialize in transforming raw data into
-                        actionable insights and building modern web
-                        experiences. Available for opportunities.
+                        I specialize in building modern web
+                        experiences. Available for any inquires.
                     </p>
                 </div>
                 <motion.div>
