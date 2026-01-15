@@ -17,7 +17,7 @@ const EXPERIENCE = [
         current: false,
         company: "Compass Global",
         location: "Yangon",
-        duration: "Sep-2022 - Jan-2024",
+        duration: "Sep-2022 - Jan-2023",
         color: "#00f5ff",
         responsibilities: [
             "Developed and optimized production-ready web applications using React, Next.js, and TypeScript, ensuring robust code quality and minimizing runtime errors through strict type-checking and custom interfaces.",
@@ -32,7 +32,7 @@ const EXPERIENCE = [
         current: false,
         company: "ShopDoora",
         location: "Yangon",
-        duration: "Sep 2022 - Oct 2022",
+        duration: "Sep 2023 - Oct 2023",
         color: "#bf00ff",
         responsibilities: [
             "Developed and executed test plans and test cases to ensure quality and accuracy.",
@@ -59,7 +59,7 @@ const EXPERIENCE = [
     {
         id: 4,
         jobTitle: "Freelance Wordpress Developer",
-        current: true,
+        current: false,
         company: "M.Wolf Marketing Agency",
         location: "Arizona, USA (Remote)",
         duration: "Sep 2025 - Present",
