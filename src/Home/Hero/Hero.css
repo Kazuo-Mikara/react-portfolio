@@ -21,6 +21,9 @@
 /* Video Background */
 .video-background {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   inset: 0;
   z-index: 0;
 }
@@ -34,6 +37,9 @@
 /* Video Overlays - Minimal and elegant */
 .video-overlay {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   inset: 0;
   background: rgba(10, 10, 10, 0.3);
   z-index: 1;

@@ -62,7 +62,7 @@ const EXPERIENCE = [
         current: false,
         company: "M.Wolf Marketing Agency",
         location: "Arizona, USA (Remote)",
-        duration: "Sep 2025 - Present",
+        duration: "Sep 2025 - Dec 2025",
         color: "#00ff88",
         responsibilities: [
             "Built and customized WordPress sites using Elementor, including custom templates, global widgets, and theme builder integrations.",

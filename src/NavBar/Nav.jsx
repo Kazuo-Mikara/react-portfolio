@@ -10,7 +10,6 @@ import './Nav.css'
 
 const navItems = [
   { id: 'about', label: 'About', icon: FiUser },
-  { id: 'skills', label: 'Skills', icon: FiCode },
   { id: 'experience', label: 'Experience', icon: FiBriefcase },
   { id: 'projects', label: 'Projects', icon: FiLayers },
   { id: 'contact', label: 'Contact', icon: FiMail },

@@ -14,6 +14,7 @@ export default function Hero() {
     const videoRef = useRef(null);
 
     const { scrollY } = useScroll();
+
     const opacity = useTransform(scrollY, [0, 400], [1, 0]);
     const scale = useTransform(scrollY, [0, 400], [1, 1.15]);
 
@@ -38,24 +39,24 @@ export default function Hero() {
                 )
                 .fromTo('.hero-left .line-2',
                     { y: 100, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1 },
-                    "-=0.7"
+                    { y: 0, opacity: 1, duration: 0.7 },
+                    "-=0.5"
                 )
                 .fromTo('.hero-description',
                     { y: 40, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.8 },
+                    { y: 0, opacity: 1, duration: 0.7 },
                     "-=0.5"
                 )
                 // Right side text animation
                 .fromTo('.hero-right .line-1',
                     { y: 100, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1 },
-                    "-=1"
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    "-=0.8"
                 )
                 .fromTo('.hero-right .line-2',
                     { y: 100, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1 },
-                    "-=0.7"
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    "-=0.8"
                 )
                 .fromTo('.hero-availability-container',
                     { x: 100, opacity: 0 },
@@ -65,8 +66,8 @@ export default function Hero() {
                 // Bottom bar animation
                 .fromTo('.hero-bottom',
                     { y: 30, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.6 },
-                    "-=0.3"
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    "-=0.8"
                 );
         }, heroRef);
 
