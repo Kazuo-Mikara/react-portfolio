@@ -75,7 +75,7 @@ const PROJECTS_DATA = [
         About:
             "A high-performance real estate or location-based management tool. It combines secure data handling with geospatial visualization, allowing users to manage properties and view data points accurately on a custom-styled map interface.",
         Link: "#",
-        github: "#",
+        github: "https://github.com/Kazuo-Mikara/crestview_pro",
         color: "#0080ff",
         images: [
             "/assets/Crestview/Crestview1.png",
@@ -89,6 +89,25 @@ const PROJECTS_DATA = [
     },
     {
         id: 5,
+        title: "Luxe Estate",
+        techstack: ["TanStack Start", "Postgres", "TailwindCSS", "Prisma ORM", "Better Auth", "Docker", "Leaflet.js"],
+        About:
+            "Like Crestview Pro but implemented using Tanstack.",
+        Link: "#",
+        github: "https://github.com/Kazuo-Mikara/luxe_estate",
+        color: "#0080ff",
+        images: [
+            "/assets/Luxe/Luxe.png",
+            "/assets/Luxe/Luxe1.png",
+            "/assets/Luxe/Luxe2.png",
+            "/assets/Luxe/Luxe3.png",
+            "/assets/Luxe/Luxe4.png",
+
+
+        ],
+    },
+    {
+        id: 6,
         title: "Mya Khwar Nyo",
         techstack: ["React Native", "NativeWind", "Appwrite", "YOLO V8", "Pytorch"],
         About:
