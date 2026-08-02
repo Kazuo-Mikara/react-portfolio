@@ -9,7 +9,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
 const EXPERIENCE = [
     {
         id: 1,
@@ -18,7 +17,7 @@ const EXPERIENCE = [
         company: "Compass Global",
         location: "Yangon",
         duration: "Sep-2022 - Jan-2023",
-        color: "#00f5ff",
+        color: "#67e8f9", // Crisp, soft Cyan (Tailwind cyan-300) - highly scannable
         responsibilities: [
             "Developed and optimized production-ready web applications using React, Next.js, and TypeScript, ensuring robust code quality and minimizing runtime errors through strict type-checking and custom interfaces.",
             "Engineered responsive, mobile-first interfaces using Tailwind CSS, maintaining high-fidelity layouts and consistent branding across complex marketing landing pages and internal admin dashboards.",
@@ -33,7 +32,7 @@ const EXPERIENCE = [
         company: "ShopDoora",
         location: "Yangon",
         duration: "Sep 2023 - Oct 2023",
-        color: "#bf00ff",
+        color: "#d8b4fe", // Luminous Lavender/Purple (Tailwind purple-300)
         responsibilities: [
             "Developed and executed test plans and test cases to ensure quality and accuracy.",
             "Identified, documented, and tracked defects, working with teams to resolve issues",
@@ -48,7 +47,7 @@ const EXPERIENCE = [
         company: "Double-Wave/HOME",
         location: "Yangon",
         duration: "Nov-2023 - August 2025",
-        color: "#ff00aa",
+        color: "#f472b6", // Bright, premium Rose/Pink (Tailwind pink-400) - clean contrast
         responsibilities: [
             "Collected and validated data from various sources, ensuring accuracy and completeness.",
             "Organized and maintained data in databases and spreadsheets",
@@ -63,12 +62,28 @@ const EXPERIENCE = [
         company: "M.Wolf Marketing Agency",
         location: "Arizona, USA (Remote)",
         duration: "Sep 2025 - Dec 2025",
-        color: "#00ff88",
+        color: "#86efac", // Soft Mint Green (Tailwind green-300) - pleasant to read
         responsibilities: [
             "Built and customized WordPress sites using Elementor, including custom templates, global widgets, and theme builder integrations.",
             "Integrated and configured essential plugins (SEO, caching, contact forms, analytics and security) and performed compatibility checks.",
             "Optimized site performance through image compression, lazy loading, caching strategies and CSS/JS minimization.",
             "Troubleshot theme and plugin conflicts, implemented accessibility improvements, and applied security hardening best practices.",
+        ],
+    },  
+    {
+        id: 5,
+        jobTitle: "Frontend Developer",
+        current: true,
+        company: "TAM79 Marketing Agency",
+        location: "Yangon,Myanmar",
+        duration: "Present",
+        color: "#60a5fa", // Electric Sky Blue (Tailwind blue-400) - draws focus to your current role
+        responsibilities: [
+            "Developed fully-responsive web applications and cross-platform mobile apps using React Native, ensuring seamless performance across all devices.",
+            "Architected and managed application containerization using Docker to guarantee consistent environments from local development to production servers.",
+            "Configured production servers and engineered automated CI/CD pipelines to streamline deployment workflows and minimize release downtime.",
+            "Led two high-impact projects through full production lifecycles, managing timelines and sprint deliverables via Jira.",
+            "Designed, tested, and integrated robust REST APIs, establishing thorough testing suites and clear technical documentation."
         ],
     },
 ];
