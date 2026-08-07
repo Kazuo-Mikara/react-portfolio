@@ -117,8 +117,7 @@ export default function Hero() {
                         </h1>
                     </div>
                     <p className="hero-description">
-                        I specialize in building modern web
-                        experiences. Available for any inquires.
+                     I specialize in architecting scalable web and cross-platform mobile applications, leading development teams from initial concept to seamless deployment.
                     </p>
                 </div>
                 <motion.div>
@@ -131,7 +130,8 @@ export default function Hero() {
                 {/* Right Side Text */}
                 <div className="hero-right">
                     <div className="text-block">
-                        <span className="line-1">Developer</span>
+                        <span className="line-1">Frontend Developer</span>
+                        <span className="line-2 italic">&amp; Development Lead</span>
                     </div>
                 </div>
 
