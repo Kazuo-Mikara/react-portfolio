@@ -132,7 +132,6 @@ export default function Hero() {
                 <div className="hero-right">
                     <div className="text-block">
                         <span className="line-1">Developer</span>
-                        <span className="line-2 italic">&amp; Data Collector</span>
                     </div>
                 </div>
 
