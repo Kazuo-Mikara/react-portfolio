@@ -70,22 +70,22 @@ const EXPERIENCE = [
             "Troubleshot theme and plugin conflicts, implemented accessibility improvements, and applied security hardening best practices.",
         ],
     },  
-    {
+{
         id: 5,
-        jobTitle: "Frontend Developer",
+        jobTitle: "Frontend Developer / Development Lead",
         current: true,
         company: "TAM79 Marketing Agency",
-        location: "Yangon,Myanmar",
+        location: "Yangon, Myanmar",
         duration: "Present",
         color: "#60a5fa", // Electric Sky Blue (Tailwind blue-400) - draws focus to your current role
         responsibilities: [
-            "Developed fully-responsive web applications and cross-platform mobile apps using React Native, ensuring seamless performance across all devices.",
-            "Architected and managed application containerization using Docker to guarantee consistent environments from local development to production servers.",
-            "Configured production servers and engineered automated CI/CD pipelines to streamline deployment workflows and minimize release downtime.",
-            "Led two high-impact projects through full production lifecycles, managing timelines and sprint deliverables via Jira.",
-            "Designed, tested, and integrated robust REST APIs, establishing thorough testing suites and clear technical documentation."
+            "Spearheaded technical development for two high-impact projects through full production lifecycles, managing timelines, team workflows, and sprint deliverables via Jira and Confluence.",
+            "Engineered fully-responsive web applications and cross-platform mobile apps utilizing React, Next.js, and React Native (Expo), optimized with TailwindCSS and React Query.",
+            "Architected application containerization using Docker and configured Nginx and Apache production servers to guarantee consistent environments from local development to production.",
+            "Designed, tested, and integrated robust REST APIs , implementing JWT authentication and managing endpoints with Postman and Insomnia.",
+            "Engineered automated CI/CD pipelines via GitHub Actions and established comprehensive testing suites with Jest and Vitest to streamline workflows and minimize release downtime."
         ],
-    },
+    }
 ];
 
 const ExperienceCard = ({ exp, index }) => {
