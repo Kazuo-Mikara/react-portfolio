@@ -1,53 +1,35 @@
-import { useEffect } from "react";
-import Nav from "../NavBar/Nav";
-import Hero from "../Home/Hero/Hero";
-import Skills from "../Home/Skills/Skills";
-import Experience from "../Home/Experience/Experience";
-import Education from "../Home/Education/Education";
-import Contact from "../Home/Contact/Contact";
-import ProjectShowcase from "../ProjectShowCase/Projects";
+import { useState } from "react";
+import Preloader from "../components/Preloader";
+import Cursor from "../components/Cursor";
+import Navbar from "../components/Navbar";
+import Hero from "../sections/Hero";
+import About, { TechMarquee } from "../sections/About";
+import Skills from "../sections/Skills";
+import Experience from "../sections/Experience";
+import Projects from "../sections/Projects";
+import Education from "../sections/Education";
+import Contact from "../sections/Contact";
+import "../components/components.css";
+
 export default function Home() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id]");
-      const scrollY = window.scrollY;
+    const [ready, setReady] = useState(false);
 
-      sections.forEach((section) => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute("id");
-        const navLink = document.querySelector(`.navbar a[href*="#${sectionId}"]`);
+    return (
+        <div className="portfolio-app">
+            <Preloader onDone={() => setReady(true)} />
+            <Cursor />
+            <Navbar />
 
-        if (navLink) {
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLink.classList.add("active");
-          } else {
-            navLink.classList.remove("active");
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  return (
-    <div style={{ scrollBehavior: "smooth" }}>
-      <Nav />
-      <section id="about">
-        <Hero />
-      </section>
-      <section id="experience">
-        <Experience />
-        <Education />
-      </section>
-      <section id="projects">
-        <ProjectShowcase />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
-    </div>
-  )
+            <main>
+                <Hero ready={ready} />
+                <TechMarquee />
+                <About />
+                <Skills />
+                <Experience />
+                <Projects />
+                <Education />
+                <Contact />
+            </main>
+        </div>
+    );
 }

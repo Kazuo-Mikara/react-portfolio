@@ -1,0 +1,174 @@
+.education {
+  position: relative;
+  overflow: hidden;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.edu-card {
+  position: relative;
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.edu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(400px circle at var(--mx, 0) var(--my, 0), color-mix(in srgb, var(--c) 14%, transparent), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.edu-card:hover::before {
+  opacity: 1;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow: 0 25px 60px -20px color-mix(in srgb, var(--c) 25%, transparent);
+}
+
+.edu-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edu-logo-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+}
+
+.edu-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.edu-period {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.edu-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.edu-school {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--c);
+}
+
+.edu-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-top: 0.2rem;
+}
+
+.edu-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.edu-status-tag {
+  color: var(--text-2);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.edu-highlights {
+  margin-top: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.highlights-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+
+.edu-highlights ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.edu-highlights li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-2);
+}
+
+.edu-highlights li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--c);
+}
+
+@media (max-width: 900px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}
