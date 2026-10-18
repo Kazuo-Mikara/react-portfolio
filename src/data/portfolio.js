@@ -9,12 +9,14 @@ import {
     SiPostgresql, SiMongodb, SiMysql, SiPrisma, SiAppwrite, SiDocker, SiNginx, SiApache,
     SiGithubactions, SiGit, SiJest, SiVitest, SiPostman, SiInsomnia, SiPytorch, SiPython,
     SiWordpress, SiElementor, SiJira, SiConfluence, SiFigma, SiLeaflet, SiJsonwebtokens,
-    SiCloudinary, SiVercel, SiGooglesheets,
+    SiCloudinary, SiVercel, SiGooglesheets, SiKotlin, SiNestjs, SiRust,
+    SiPlaywright
 } from "react-icons/si";
 import {
     FiLock, FiBox, FiShield, FiCpu, FiLayout, FiSmartphone, FiServer, FiDatabase,
     FiGitBranch, FiCheckCircle, FiBarChart2, FiUsers, FiLink, FiCrosshair,
 } from "react-icons/fi";
+import { RiSupabaseLine } from "react-icons/ri";
 
 export const PROFILE = {
     name: "Htoo Myat Kyaw",
@@ -50,6 +52,8 @@ export const TECH = {
     zustand: { name: "Zustand", icon: FiBox, color: "#e8b472" },
     reactnative: { name: "React Native", icon: SiReact, color: "#61dafb" },
     expo: { name: "Expo", icon: SiExpo, color: "#ffffff" },
+    supabase: { name: "Supabase", icon: RiSupabaseLine, color: "#22c55e" },
+    kotlin: { name: "Kotlin", icon: SiKotlin, color: "#603793" },
     nativewind: { name: "NativeWind", icon: SiTailwindcss, color: "#06b6d4" },
     node: { name: "Node.js", icon: SiNodedotjs, color: "#5fa04e" },
     express: { name: "Express", icon: SiExpress, color: "#ffffff" },
@@ -58,6 +62,8 @@ export const TECH = {
     jwt: { name: "JWT", icon: SiJsonwebtokens, color: "#fb015b" },
     auth: { name: "Auth.js / Better Auth", icon: FiLock, color: "#c4b5fd" },
     php: { name: "PHP", icon: SiPhp, color: "#8892bf" },
+    nestjs: { name: "NestJS", icon: SiNestjs, color: "#e0234e" },
+    rust: { name: "Rust", icon: SiRust, color: "#64413d" },
     postgres: { name: "PostgreSQL", icon: SiPostgresql, color: "#4169e1" },
     mongodb: { name: "MongoDB", icon: SiMongodb, color: "#47a248" },
     mysql: { name: "MySQL", icon: SiMysql, color: "#4479a1" },
@@ -67,6 +73,7 @@ export const TECH = {
     docker: { name: "Docker", icon: SiDocker, color: "#2496ed" },
     nginx: { name: "Nginx", icon: SiNginx, color: "#009639" },
     apache: { name: "Apache", icon: SiApache, color: "#d22128" },
+    playwright: { name: "Playwright", icon: SiPlaywright, color: "#4169e1" },
     gha: { name: "GitHub Actions", icon: SiGithubactions, color: "#2088ff" },
     git: { name: "Git", icon: SiGit, color: "#f05032" },
     vercel: { name: "Vercel / Netlify", icon: SiVercel, color: "#ffffff" },
@@ -109,8 +116,9 @@ export const DOMAINS = [
         icon: FiSmartphone,
         color: "#22d3ee",
         level: 82,
-        summary: "iOS & Android apps from a single codebase using React Native, Expo and NativeWind.",
-        tech: ["reactnative", "expo", "nativewind", "appwrite"],
+        summary: "iOS & Android apps from a single codebase using React Native, Expo and Kotlin (Jetpack Compose)",
+        tech: ["reactnative", "expo", "supabase", "appwrite", "kotlin"
+        ],
     },
     {
         id: "backend",
@@ -119,7 +127,7 @@ export const DOMAINS = [
         color: "#f472b6",
         level: 80,
         summary: "REST & GraphQL services with secure JWT / session auth, documented and tested end-to-end.",
-        tech: ["node", "express", "graphql", "rest", "jwt", "auth", "php"],
+        tech: ["node", "express", "graphql", "rest", "jwt", "auth", "php", "nestjs", "rust"],
     },
     {
         id: "data",
@@ -146,7 +154,7 @@ export const DOMAINS = [
         color: "#fbbf24",
         level: 85,
         summary: "Test plans, automated suites and rigorous API testing — a QA mindset baked into every build.",
-        tech: ["jest", "vitest", "postman", "insomnia", "qa"],
+        tech: ["jest", "vitest", "postman", "insomnia", "qa", "playwright"],
     },
     {
         id: "ai",
@@ -181,12 +189,12 @@ export const EXPERIENCE = [
         color: "#a78bfa",
         points: [
             "Spearheaded technical development for two high-impact projects through full production lifecycles, managing timelines, team workflows, and sprint deliverables via Jira and Confluence.",
-            "Engineered fully-responsive web applications and cross-platform mobile apps utilizing React, Next.js, and React Native (Expo), optimized with TailwindCSS and React Query.",
+            "Developed fully-responsive web applications and cross-platform mobile apps utilizing React, Next.js, and React Native (Expo), optimized with TailwindCSS and React Query.",
             "Architected application containerization using Docker and configured Nginx and Apache production servers to guarantee consistent environments from local development to production.",
-            "Designed, tested, and integrated robust REST APIs, implementing JWT authentication and managing endpoints with Postman and Insomnia.",
-            "Engineered automated CI/CD pipelines via GitHub Actions and established comprehensive testing suites with Jest and Vitest to streamline workflows and minimize release downtime.",
+            "Implemented, tested, and deployed robust KBZPay payment gateway integrations (including MMQR and PWAAPP methods) for e-commerce platforms, ensuring secure, seamless checkout flows and reliable transaction processing.",
+            "Built automated CI/CD pipelines via GitHub Actions and established comprehensive testing suites with Jest and Vitest to streamline workflows and minimize release downtime.",
         ],
-        stack: ["react", "next", "reactnative", "expo", "tailwind", "tanstack", "docker", "nginx", "apache", "rest", "jwt", "postman", "insomnia", "gha", "jest", "vitest", "jira", "confluence", "agile"],
+        stack: ["react", "next", "reactnative", "expo", "tailwind", "nestjs", "rust", "tanstack", "docker", "nginx", "apache", "rest", "jwt", "postman", "insomnia", "gha", "jest", "vitest", "jira", "confluence", "agile", "playwright"],
     },
     {
         id: "mwolf",
@@ -273,7 +281,7 @@ export const PROJECTS = [
         kind: "AI Mobile App · Computer Vision",
         description:
             "An AI-assisted plant identification app — snap a photo and the app identifies the plant. Uses YOLOv8, Swin Transformer, and ConvNeXt via PyTorch for detection & classification, Appwrite for the backend and Cloudinary for image storage.",
-        stack: ["reactnative", "nativewind", "appwrite", "yolo", "swinTransformer", "convnext", "pytorch", "python", "cloudinary"],
+        stack: ["reactnative", "nativewind", "appwrite", "yolo", "swinTransformer", "convnext", "pytorch", "python", "cloudinary", "supabase"],
         live: null,
         github: "https://github.com/Kazuo-Mikara/MyaKhwarNyo",
         color: "#4ade80",
@@ -380,7 +388,7 @@ export const ALL_TECH_IDS = Object.keys(TECH);
 
 export const STATS = [
     { value: new Date().getFullYear() - 2022, suffix: "+", label: "Years in tech" },
-    { value: PROJECTS.length, suffix: "", label: "Featured builds" },
+    { value: 4, suffix: "", label: "Featured builds" },
     { value: ALL_TECH_IDS.length, suffix: "+", label: "Technologies applied" },
     { value: EXPERIENCE.length, suffix: "", label: "Professional roles" },
 ];
