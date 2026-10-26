@@ -275,19 +275,7 @@ export const PROJECTS = [
         color: "#2dd4bf",
         images: seq("Pharmacy-NextJs", "Pharmacy", 7, "jpg", "-"),
     },
-    {
-        id: "myakhwarnyo",
-        title: "Mya Khwar Nyo",
-        kind: "AI Mobile App · Computer Vision",
-        description:
-            "An AI-assisted plant identification app — snap a photo and the app identifies the plant. Uses YOLOv8, Swin Transformer, and ConvNeXt via PyTorch for detection & classification, Appwrite for the backend and Cloudinary for image storage.",
-        stack: ["reactnative", "nativewind", "appwrite", "yolo", "swinTransformer", "convnext", "pytorch", "python", "cloudinary", "supabase"],
-        live: null,
-        github: "https://github.com/Kazuo-Mikara/MyaKhwarNyo",
-        color: "#4ade80",
-        mobile: true,
-        images: seq("MyaKhwarNyo", "MyaKhwarNyo", 12, "jpg", "-"),
-    },
+
     {
         id: "luxe",
         title: "Luxe Estate",
@@ -347,6 +335,18 @@ export const PROJECTS = [
         github: "https://github.com/Kazuo-Mikara/phamarcy_Ecommerce",
         color: "#22d3ee",
         images: seq("Pharmacy", "Pharmacy", 9),
+    }, {
+        id: "myakhwarnyo",
+        title: "Mya Khwar Nyo",
+        kind: "AI Mobile App · Computer Vision",
+        description:
+            "An AI-assisted plant identification app — snap a photo and the app identifies the plant. Uses YOLOv8, Swin Transformer, and ConvNeXt via PyTorch for detection & classification, Appwrite for the backend and Cloudinary for image storage.",
+        stack: ["reactnative", "nativewind", "appwrite", "yolo", "swinTransformer", "convnext", "pytorch", "python", "cloudinary", "supabase"],
+        live: null,
+        github: "https://github.com/Kazuo-Mikara/MyaKhwarNyo",
+        color: "#4ade80",
+        mobile: true,
+        images: seq("MyaKhwarNyo", "MyaKhwarNyo", 12, "jpg", "-"),
     },
 ];
 

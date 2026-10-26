@@ -3,14 +3,17 @@ import { motion, useScroll, useSpring, useInView } from "framer-motion";
 import { FiMapPin, FiCalendar } from "react-icons/fi";
 import { EXPERIENCE, TECH } from "../data/portfolio";
 import { SectionHead, useSpotlight } from "../components/motion";
+import { useViewMode } from "../context/ViewModeContext";
 import "./Experience.css";
 
 const EASE = [0.22, 1, 0.36, 1];
 
 function Role({ exp, i }) {
+    const { isCompact } = useViewMode();
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-15% 0px" });
     const spotlight = useSpotlight();
+    const displayedStack = isCompact ? exp.stack.slice(0, 5) : exp.stack;
 
     return (
         <motion.article
@@ -63,14 +66,23 @@ function Role({ exp, i }) {
             </ul>
 
             <div className="role-stack">
-                {exp.stack.map((id) => {
+                {displayedStack.map((id) => {
                     const t = TECH[id];
+                    if (!t) return null;
                     return (
                         <span key={id} className="chip" style={{ "--chip-color": t.color }}>
                             <t.icon /> {t.name}
                         </span>
                     );
                 })}
+                {isCompact && exp.stack.length > 5 && (
+                    <span
+                        className="chip chip-more mono"
+                        title={exp.stack.slice(5).map((id) => TECH[id]?.name).filter(Boolean).join(", ")}
+                    >
+                        +{exp.stack.length - 5} more
+                    </span>
+                )}
             </div>
         </motion.article>
     );

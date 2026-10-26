@@ -4,6 +4,7 @@ import { useLenis } from "lenis/react";
 import { FiArrowUpRight, FiBriefcase, FiFolder, FiLayers } from "react-icons/fi";
 import { DOMAINS, TECH, usageFor } from "../data/portfolio";
 import { SectionHead, useSpotlight } from "../components/motion";
+import { useViewMode } from "../context/ViewModeContext";
 import "./Skills.css";
 
 const EASE = [0.22, 1, 0.36, 1];
@@ -42,6 +43,7 @@ function Ring({ value, color, inView }) {
 }
 
 function DomainCard({ d, i, active, onSelect }) {
+    const { isCompact } = useViewMode();
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-10%" });
     const spotlight = useSpotlight();
@@ -66,10 +68,12 @@ function DomainCard({ d, i, active, onSelect }) {
                 <span className="domain-icon">
                     <Icon />
                 </span>
-                <div className="domain-level">
-                    <Ring value={d.level} color={d.color} inView={inView} />
-                    <span className="mono">{d.level}</span>
-                </div>
+                {!isCompact && (
+                    <div className="domain-level">
+                        <Ring value={d.level} color={d.color} inView={inView} />
+                        <span className="mono">{d.level}</span>
+                    </div>
+                )}
             </div>
 
             <h3 className="domain-title">{d.title}</h3>
@@ -259,10 +263,12 @@ function Explorer({ domainId, setDomainId }) {
 }
 
 export default function Skills() {
+    const { isCompact } = useViewMode();
     const [domainId, setDomainId] = useState(null);
     const lenis = useLenis();
 
     const select = (id) => {
+        if (isCompact) return;
         setDomainId(id);
         const el = document.getElementById("stack-explorer");
         if (el) lenis ? lenis.scrollTo(el, { offset: -100, duration: 1.2 }) : el.scrollIntoView({ behavior: "smooth" });
@@ -276,7 +282,11 @@ export default function Skills() {
                     eyebrow="02 — Applied knowledge"
                     title="Skills proven"
                     accent="in production."
-                    sub="Not just a list of buzzwords — every domain below links to the real projects and roles where I applied it. Click a card to explore."
+                    sub={
+                        isCompact
+                            ? "Core architectural specializations and verified technical stack across frontend, mobile, systems, and AI."
+                            : "Not just a list of buzzwords — every domain below links to the real projects and roles where I applied it. Click a card to explore."
+                    }
                 />
 
                 <div className="domains">
@@ -285,7 +295,7 @@ export default function Skills() {
                     ))}
                 </div>
 
-                <Explorer domainId={domainId} setDomainId={setDomainId} />
+                {!isCompact && <Explorer domainId={domainId} setDomainId={setDomainId} />}
             </div>
         </section>
     );

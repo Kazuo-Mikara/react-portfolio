@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
 import { useLenis } from "lenis/react";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiZap, FiLayers } from "react-icons/fi";
 import { PROFILE } from "../data/portfolio";
 import { Magnetic } from "./motion";
+import { useViewMode } from "../context/ViewModeContext";
 
 const LINKS = [
     { id: "about", label: "About" },
@@ -14,6 +15,7 @@ const LINKS = [
 ];
 
 export default function Navbar() {
+    const { isCompact, toggleMode, openModal } = useViewMode();
     const [active, setActive] = useState("home");
     const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -22,10 +24,11 @@ export default function Navbar() {
     const { scrollY, scrollYProgress } = useScroll();
     const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
-    // Hide on scroll down, reveal on scroll up
+    // Hide on scroll down, reveal on scroll up (keep visible in pinned projects section)
     useMotionValueEvent(scrollY, "change", (y) => {
         const prev = scrollY.getPrevious() ?? 0;
-        setHidden(y > prev && y > 400 && !open);
+        const insidePinnedSection = active === "projects";
+        setHidden(!insidePinnedSection && y > prev && y > 400 && !open);
         setScrolled(y > 40);
     });
 
@@ -96,6 +99,16 @@ export default function Navbar() {
                 </nav>
 
                 <div className="nav-right">
+                    <button
+                        type="button"
+                        className={`nav-mode-pill mono ${isCompact ? "compact" : "full"}`}
+                        onClick={toggleMode}
+                        title={`Currently in ${isCompact ? "Compact" : "Full"} mode. Click to switch.`}
+                    >
+                        {isCompact ? <FiZap className="mode-icon-zap" /> : <FiLayers className="mode-icon-layers" />}
+                        <span>{isCompact ? "Compact" : "Full"}</span>
+                    </button>
+
                     <Magnetic strength={0.25}>
                         <a href="#contact" onClick={go("contact")} className="btn btn-primary nav-cta" id="nav-cta">
                             Let's talk <FiArrowUpRight />

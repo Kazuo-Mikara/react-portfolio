@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createTimeline } from "animejs";
 import { useLenis } from "lenis/react";
@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import { PROJECTS, TECH } from "../data/portfolio";
 import { SectionHead } from "../components/motion";
+import { useViewMode } from "../context/ViewModeContext";
 import "./Projects.css";
 
 /* =========================================================================
@@ -17,16 +18,36 @@ import "./Projects.css";
    - Scrubbing backward plays the timeline in exact reverse
    ========================================================================= */
 
-const N = PROJECTS.length;
-const TOTAL_DURATION = N * 1000; // 1000ms per project (e.g. 7000ms total)
 const pad = (n) => String(n).padStart(2, "0");
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 
 export default function Projects() {
+    const { isCompact } = useViewMode();
+
+    const projectsList = useMemo(() => {
+        if (!isCompact) return PROJECTS;
+        return PROJECTS.filter((p) =>
+            ["pharmacy-next", "luxe", "zenix", "myakhwarnyo"].includes(p.id)
+        );
+    }, [isCompact]);
+
+    const secondaryProjects = useMemo(() => {
+        return PROJECTS.filter((p) => !projectsList.some((fp) => fp.id === p.id));
+    }, [projectsList]);
+
+    const N = projectsList.length;
+    const TOTAL_DURATION = N * 1000;
+
     const [activeIdx, setActiveIdx] = useState(0);
     const [innerProgress, setInnerProgress] = useState(0);
     const [modalData, setModalData] = useState(null);
     const lenis = useLenis();
+
+    useEffect(() => {
+        if (activeIdx >= N) {
+            setActiveIdx(0);
+        }
+    }, [N, activeIdx]);
 
     const trackRef = useRef(null);
     const pinRef = useRef(null);
@@ -35,7 +56,7 @@ export default function Projects() {
     const activeRef = useRef(0);
     activeRef.current = activeIdx;
 
-    const project = PROJECTS[activeIdx];
+    const project = projectsList[activeIdx] || projectsList[0];
 
     // Scroll directly to a specific project
     const scrollToProject = useCallback(
@@ -238,7 +259,7 @@ export default function Projects() {
             window.removeEventListener("resize", onScroll);
             if (frame) cancelAnimationFrame(frame);
         };
-    }, []);
+    }, [N, TOTAL_DURATION]);
 
     /* ---------------- Lightbox Modal ---------------- */
     const openModal = (p, imgIdx = 0) => {
@@ -289,7 +310,7 @@ export default function Projects() {
             <div
                 className="device-scroll-track"
                 ref={trackRef}
-                style={{ "--track-h": `${N * 130 + 80}vh` }}
+                style={{ "--track-h": `${N * 65 + 30}vh` }}
             >
                 <div className="device-pin-wrapper" ref={pinRef}>
                     <div className="container device-stage-container">
@@ -388,21 +409,58 @@ export default function Projects() {
                                     </motion.div>
                                 </AnimatePresence>
 
-                                {/* Project Navigation Pills */}
-                                <div className="project-nav-bar">
-                                    {PROJECTS.map((p, i) => (
+                                {/* Project Navigation Pills & Quick Controls */}
+                                <div className="project-nav-row">
+                                    <div className="project-nav-bar">
                                         <button
-                                            key={p.id}
                                             type="button"
-                                            className={`nav-pill-btn mono ${i === activeIdx ? "active" : ""}`}
-                                            style={{ "--pill-c": p.color }}
-                                            onClick={() => scrollToProject(i)}
-                                            title={`Scroll to ${p.title}`}
+                                            className="nav-arrow-btn"
+                                            disabled={activeIdx === 0}
+                                            onClick={() => scrollToProject(activeIdx - 1)}
+                                            aria-label="Previous project"
+                                            title="Previous project"
                                         >
-                                            <span className="pill-num">{pad(i + 1)}</span>
-                                            <span className="pill-name">{p.title.split(" ")[0]}</span>
+                                            <FiChevronLeft />
                                         </button>
-                                    ))}
+                                        <div className="nav-pills-list">
+                                            {projectsList.map((p, i) => (
+                                                <button
+                                                    key={p.id}
+                                                    type="button"
+                                                    className={`nav-pill-btn mono ${i === activeIdx ? "active" : ""}`}
+                                                    style={{ "--pill-c": p.color }}
+                                                    onClick={() => scrollToProject(i)}
+                                                    title={`Scroll to ${p.title}`}
+                                                >
+                                                    <span className="pill-num">{pad(i + 1)}</span>
+                                                    <span className="pill-name">{p.title.split(" ")[0]}</span>
+                                                </button>
+                                            ))}
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className="nav-arrow-btn"
+                                            disabled={activeIdx === N - 1}
+                                            onClick={() => scrollToProject(activeIdx + 1)}
+                                            aria-label="Next project"
+                                            title="Next project"
+                                        >
+                                            <FiChevronRight />
+                                        </button>
+                                    </div>
+                                    <a
+                                        href="#education"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            const el = document.getElementById("education");
+                                            lenis ? lenis.scrollTo(el, { offset: -40, duration: 1.2 }) : el?.scrollIntoView({ behavior: "smooth" });
+                                        }}
+                                        className="skip-projects-link mono"
+                                        title="Skip past works section"
+                                    >
+                                        <span>Skip to Education</span>
+                                        <FiArrowDown />
+                                    </a>
                                 </div>
                             </div>
 
@@ -552,6 +610,55 @@ export default function Projects() {
                     </div>
                 </div>
             </div>
+
+            {/* In compact mode, show remaining projects in a clean grid */}
+            {isCompact && secondaryProjects.length > 0 && (
+                <div className="container secondary-projects-wrap">
+                    <div className="secondary-head">
+                        <span className="eyebrow">More Builds</span>
+                        <h4 className="secondary-title">Additional Works ({secondaryProjects.length})</h4>
+                        <p className="secondary-sub">Specialized production builds and applications.</p>
+                    </div>
+                    <div className="secondary-grid">
+                        {secondaryProjects.map((p) => (
+                            <div key={p.id} className="secondary-card glass" style={{ "--c": p.color }}>
+                                <div className="sec-img-wrap" onClick={() => openModal(p, 0)}>
+                                    <img src={p.images[0]} alt={p.title} loading="lazy" />
+                                    <span className="sec-view-tag mono">Gallery ({p.images.length})</span>
+                                </div>
+                                <div className="sec-card-body">
+                                    <span className="sec-kind mono">{p.kind}</span>
+                                    <h4 className="sec-name">{p.title}</h4>
+                                    <p className="sec-desc">{p.description}</p>
+                                    <div className="sec-stack">
+                                        {p.stack.slice(0, 4).map((tid) => {
+                                            const t = TECH[tid];
+                                            if (!t) return null;
+                                            return (
+                                                <span key={tid} className="chip" style={{ "--chip-color": t.color }}>
+                                                    <t.icon /> {t.name}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="sec-links">
+                                        {p.live && (
+                                            <a href={p.live} target="_blank" rel="noopener noreferrer" className="sec-link">
+                                                Live Demo <FiExternalLink />
+                                            </a>
+                                        )}
+                                        {p.github && (
+                                            <a href={p.github} target="_blank" rel="noopener noreferrer" className="sec-link">
+                                                GitHub <FiGithub />
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <div className="container more-work">
                 <a

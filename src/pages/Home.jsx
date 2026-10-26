@@ -2,6 +2,7 @@ import { useState } from "react";
 import Preloader from "../components/Preloader";
 import Cursor from "../components/Cursor";
 import Navbar from "../components/Navbar";
+import ViewModeModal from "../components/ViewModeModal";
 import Hero from "../sections/Hero";
 import About, { TechMarquee } from "../sections/About";
 import Skills from "../sections/Skills";
@@ -19,6 +20,7 @@ export default function Home() {
             <Preloader onDone={() => setReady(true)} />
             <Cursor />
             <Navbar />
+            <ViewModeModal />
 
             <main>
                 <Hero ready={ready} />

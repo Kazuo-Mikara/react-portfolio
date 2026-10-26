@@ -3,9 +3,10 @@ import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSp
 import { useLenis } from "lenis/react";
 import { FaGithub, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 import { FiArrowUpRight, FiDownload, FiPause, FiPlay } from "react-icons/fi";
-import Resume from "../assets/Htoo_Myat_Kyaw.pdf";
+import Resume from "../assets/Htoo_Myat_Kyaw_CV.pdf";
 import { PROFILE } from "../data/portfolio";
 import { Magnetic } from "../components/motion";
+import { useViewMode } from "../context/ViewModeContext";
 import "./Hero.css";
 
 const EASE = [0.22, 1, 0.36, 1];
@@ -124,6 +125,7 @@ const SplitLine = ({ text, delay, ready, className = "" }) => (
 );
 
 export default function Hero({ ready }) {
+    const { isCompact } = useViewMode();
     const ref = useRef(null);
     const videoRef = useRef(null);
     const [playing, setPlaying] = useState(true);
@@ -267,8 +269,12 @@ export default function Hero({ ready }) {
                             <span className="code-badge mono">LIVE</span>
                         </div>
                         <TypedCode start={ready} />
-                        <div className="code-floating chip-a glass mono">⚡ 99 Lighthouse</div>
-                        <div className="code-floating chip-b glass mono">✓ CI passing</div>
+                        {!isCompact && (
+                            <>
+                                <div className="code-floating chip-a glass mono">⚡ 99 Lighthouse</div>
+                                <div className="code-floating chip-b glass mono">✓ CI passing</div>
+                            </>
+                        )}
                     </motion.div>
                 </motion.aside>
             </motion.div>
@@ -303,10 +309,12 @@ export default function Hero({ ready }) {
 
                 <div className="hero-meta">
                     <span className="mono">{PROFILE.location}</span>
-                    <LocalTime />
-                    <button className="video-toggle" onClick={toggleVideo} aria-label={playing ? "Pause background video" : "Play background video"} id="hero-video-toggle">
-                        {playing ? <FiPause /> : <FiPlay />}
-                    </button>
+                    {!isCompact && <LocalTime />}
+                    {!isCompact && (
+                        <button className="video-toggle" onClick={toggleVideo} aria-label={playing ? "Pause background video" : "Play background video"} id="hero-video-toggle">
+                            {playing ? <FiPause /> : <FiPlay />}
+                        </button>
+                    )}
                 </div>
             </motion.div>
         </section>
