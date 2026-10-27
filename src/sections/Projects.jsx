@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { createTimeline } from "animejs";
 import { useLenis } from "lenis/react";
@@ -267,18 +268,30 @@ export default function Projects() {
         document.body.style.overflow = "hidden";
         lenis?.stop();
     };
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setModalData(null);
         document.body.style.overflow = "";
         lenis?.start();
-    };
-    const nextModalImg = () =>
-        setModalData((prev) => ({ ...prev, imgIdx: (prev.imgIdx + 1) % prev.project.images.length }));
-    const prevModalImg = () =>
-        setModalData((prev) => ({
+    }, [lenis]);
+    const nextModalImg = useCallback(() =>
+        setModalData((prev) => (prev ? { ...prev, imgIdx: (prev.imgIdx + 1) % prev.project.images.length } : null)), []);
+    const prevModalImg = useCallback(() =>
+        setModalData((prev) => (prev ? {
             ...prev,
             imgIdx: (prev.imgIdx - 1 + prev.project.images.length) % prev.project.images.length,
-        }));
+        } : null)), []);
+
+    // Lightbox modal keyboard controls (Esc to close, arrows to cycle images)
+    useEffect(() => {
+        if (!modalData) return;
+        const onModalKey = (e) => {
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowLeft") prevModalImg();
+            if (e.key === "ArrowRight") nextModalImg();
+        };
+        window.addEventListener("keydown", onModalKey);
+        return () => window.removeEventListener("keydown", onModalKey);
+    }, [modalData, closeModal, prevModalImg, nextModalImg]);
 
     // Keyboard navigation
     const onKeyDown = (e) => {
@@ -672,50 +685,54 @@ export default function Projects() {
             </div>
 
             {/* Lightbox Modal */}
-            <AnimatePresence>
-                {modalData && (
-                    <motion.div
-                        className="modal-backdrop"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={closeModal}
-                        data-lenis-prevent
-                    >
-                        <button className="modal-close" onClick={closeModal} aria-label="Close modal">
-                            <FiX />
-                        </button>
+            {typeof document !== "undefined" &&
+                createPortal(
+                    <AnimatePresence>
+                        {modalData && (
+                            <motion.div
+                                className="modal-backdrop"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={closeModal}
+                                data-lenis-prevent
+                            >
+                                <button className="modal-close" onClick={closeModal} aria-label="Close modal">
+                                    <FiX />
+                                </button>
 
-                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                            <div className="modal-image-wrap">
-                                <img
-                                    src={modalData.project.images[modalData.imgIdx]}
-                                    alt={`${modalData.project.title} screenshot`}
-                                />
-                            </div>
+                                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                                    <div className="modal-image-wrap">
+                                        <img
+                                            src={modalData.project.images[modalData.imgIdx]}
+                                            alt={`${modalData.project.title} screenshot`}
+                                        />
+                                    </div>
 
-                            {modalData.project.images.length > 1 && (
-                                <div className="modal-nav">
-                                    <button onClick={prevModalImg} aria-label="Previous image">
-                                        <FiChevronLeft />
-                                    </button>
-                                    <span className="mono modal-counter">
-                                        {modalData.imgIdx + 1} / {modalData.project.images.length}
-                                    </span>
-                                    <button onClick={nextModalImg} aria-label="Next image">
-                                        <FiChevronRight />
-                                    </button>
+                                    {modalData.project.images.length > 1 && (
+                                        <div className="modal-nav">
+                                            <button onClick={prevModalImg} aria-label="Previous image">
+                                                <FiChevronLeft />
+                                            </button>
+                                            <span className="mono modal-counter">
+                                                {modalData.imgIdx + 1} / {modalData.project.images.length}
+                                            </span>
+                                            <button onClick={nextModalImg} aria-label="Next image">
+                                                <FiChevronRight />
+                                            </button>
+                                        </div>
+                                    )}
+
+                                    <div className="modal-meta">
+                                        <h3>{modalData.project.title}</h3>
+                                        <p className="mono">{modalData.project.kind}</p>
+                                    </div>
                                 </div>
-                            )}
-
-                            <div className="modal-meta">
-                                <h3>{modalData.project.title}</h3>
-                                <p className="mono">{modalData.project.kind}</p>
-                            </div>
-                        </div>
-                    </motion.div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>,
+                    document.body
                 )}
-            </AnimatePresence>
         </section>
     );
 }

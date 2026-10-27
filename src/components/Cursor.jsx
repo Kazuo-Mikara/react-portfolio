@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /**
@@ -52,7 +53,7 @@ export default function Cursor() {
 
     const size = label ? 84 : hover ? 54 : 34;
 
-    return (
+    return createPortal(
         <>
             <motion.div className="cursor-dot" style={{ x, y }} animate={{ scale: hover ? 0 : 1 }} />
             <motion.div
@@ -63,6 +64,7 @@ export default function Cursor() {
             >
                 {label && <span>{label}</span>}
             </motion.div>
-        </>
+        </>,
+        document.body
     );
 }
